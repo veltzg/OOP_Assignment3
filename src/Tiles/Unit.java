@@ -7,20 +7,19 @@ public abstract class Unit extends Tile{
 
     //fields:
     protected String name;
-    protected Integer healthPool;
-    protected Integer healthAmount;
-    protected Integer attackPoints;
-    protected Integer defensePoints;
+    protected Health health;
+    protected int attackPoints;
+    protected int defensePoints;
 
     //constructors:
-    protected Unit
-    (char tile, String name, Integer healthPool, Integer healthAmount, Integer attackPoints, Integer defensePoints){
+
+    protected Unit (char tile, String name, int healthCapacity, int attack, int defense)
+   {
         super (tile);
         this.name = name;
-        this.healthPool = healthPool;
-        this.healthAmount = healthAmount;
-        this.attackPoints = attackPoints;
-        this.defensePoints = defensePoints;
+        this.health = new Health(healthCapacity,healthCapacity);
+        this.attackPoints = attack;
+        this.defensePoints = defense;
     }
 
 
