@@ -12,8 +12,14 @@ public abstract class Player extends Unit {
     //constructor:
     protected Player(char tile, String name, Integer healthPool, Integer healthAmount, Integer attackPoints, Integer defensePoints) {
         super(tile, name, healthPool, healthAmount, attackPoints, defensePoints);
+        this.experience = 0;
+        this.playerLevel = 1;
     }
 
     //methods:
+    protected void levelUp(){
+        experience = experience - playerLevel * 50;
+        playerLevel = playerLevel + 1;
 
+    }
 }
