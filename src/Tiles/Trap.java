@@ -16,5 +16,15 @@ public class Trap extends Enemy{
         super(tile, name, healthPool, healthAmount, attackPoints, defensePoints);
     }
 
+    @Override
+    public Position enemyTurn(Player p) {
+        return null;
+    }
+
+    @Override
+    public void processStep() {
+
+    }
+
     //methods:
 }

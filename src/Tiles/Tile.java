@@ -2,7 +2,6 @@ package Tiles;
 
 import GameManager.*;
 import java.util.*;
-import javax.swing.text.Position;
 import java.awt.*;
 
 public abstract class Tile implements Comparable<Tile> {

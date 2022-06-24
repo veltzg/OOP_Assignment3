@@ -10,7 +10,7 @@ public abstract class Unit extends Tile{
     protected Health health;
     protected int attackPoints;
     protected int defensePoints;
-    public MessageCallback mcb;
+    public MessageCallback messageCB;
 
     //constructors:
 
@@ -38,12 +38,12 @@ public abstract class Unit extends Tile{
         this.health = health;
     }
 
-    public MessageCallback getMcb() {
-        return mcb;
+    public MessageCallback getMessageCB() {
+        return messageCB;
     }
 
-    public void setMcb(MessageCallback mcb) {
-        this.mcb = mcb;
+    public void setMessageCB(MessageCallback messageCB) {
+        this.messageCB = messageCB;
     }
     //methods:
     protected void initialize(Position position, MessageCallback messageCallback){
