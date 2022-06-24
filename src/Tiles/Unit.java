@@ -10,6 +10,7 @@ public abstract class Unit extends Tile{
     protected Health health;
     protected int attackPoints;
     protected int defensePoints;
+    public MessageCallback mcb;
 
     //constructors:
 
@@ -22,7 +23,28 @@ public abstract class Unit extends Tile{
         this.defensePoints = defense;
     }
 
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public Health getHealth() {
+        return health;
+    }
+
+    public void setHealth(Health health) {
+        this.health = health;
+    }
+
+    public MessageCallback getMcb() {
+        return mcb;
+    }
+
+    public void setMcb(MessageCallback mcb) {
+        this.mcb = mcb;
+    }
     //methods:
     protected void initialize(Position position, MessageCallback messageCallback){
         ...

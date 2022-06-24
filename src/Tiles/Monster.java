@@ -9,8 +9,9 @@ public class Monster extends Enemy{
     protected Integer visionRange;
 
     //constructor:
-    protected Monster(char tile, String name, Integer healthPool, Integer healthAmount, Integer attackPoints, Integer defensePoints) {
-        super(tile, name, healthPool, healthAmount, attackPoints, defensePoints);
+    protected Monster(char tile, String name, Integer healthCapacity, Integer attackPoints, Integer defensePoints, Integer experienceValue, Integer visionRange) {
+        super(tile, name, healthCapacity, attackPoints, defensePoints, experienceValue);
+        this.visionRange = visionRange;
     }
 
     //methods:
