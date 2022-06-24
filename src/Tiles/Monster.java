@@ -9,10 +9,62 @@ public class Monster extends Enemy{
     protected Integer visionRange;
 
     //constructor:
-    protected Monster(char tile, String name, Integer healthPool, Integer healthAmount, Integer attackPoints, Integer defensePoints) {
-        super(tile, name, healthPool, healthAmount, attackPoints, defensePoints);
+    protected Monster(char tile, String name, Integer healthCapacity, Integer attackPoints, Integer defensePoints, Integer experienceValue, Integer visionRange) {
+        super(tile, name, healthCapacity, attackPoints, defensePoints, experienceValue);
+        this.visionRange = visionRange;
     }
 
     //methods:
+
+    @Override
+    public Position enemyTurn(Player p) {
+        if (this.getPosition().range(p.getPosition()) < visionRange) {
+            return chase(p);
+        }
+        else {
+            return randomMove();
+        }
+    }
+
+
+    public Position chase(Player p){
+        int dx = this.getPosition().getX() - p.getPosition().getX();
+        int dy = this.getPosition().getY() - p.getPosition().getY();
+        if (Math.abs(dx) > Math.abs(dy)) {
+            if (dx > 0)
+                return getPosition().moveLeft();
+            else
+                return getPosition().moveRight();
+        }
+        else {
+            if (dy > 0)
+                return getPosition().moveUp();
+            else
+                return getPosition().moveDown();
+        }
+    }
+
+
+    public Position randomMove(){
+        int rand = (int)(Math.random() * 5);
+        if (rand == 0)
+            return (this.getPosition());
+        if (rand == 1)
+            return (this.getPosition().moveLeft());
+        if (rand == 2)
+            return (this.getPosition().moveRight());
+        if (rand == 3)
+            return (this.getPosition().moveUp());
+        if (rand == 4)
+            return (this.getPosition().moveDown());
+        return null;
+    }
+
+
+    @Override
+    public void processStep() {
+        throw new NoSuchElementException();
+    }
+
 
 }
