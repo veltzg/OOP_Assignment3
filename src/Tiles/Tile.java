@@ -2,8 +2,8 @@ package Tiles;
 
 import GameManager.*;
 import java.util.*;
-import javax.swing.text.Position;
 import java.awt.*;
+import GameManager.Position;
 
 public abstract class Tile implements Comparable<Tile> {
 
@@ -44,5 +44,11 @@ public abstract class Tile implements Comparable<Tile> {
     @Override
     public String toString() {
         return String.valueOf(tile);
+    }
+
+    public void replacePosition(Tile other){
+        Position p = new Position(getPosition().getX(), getPosition().getY());
+        setPosition(other.getPosition());
+        other.setPosition(p);
     }
 }
