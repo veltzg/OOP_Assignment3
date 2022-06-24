@@ -5,36 +5,57 @@ import java.util.*;
 
 public abstract class Unit extends Tile{
 
+    public String getName() {
+        return name;
+    }
+
+    public Health getHealth() {
+        return health;
+    }
+
+    public int getAttackPoints() {
+        return attackPoints;
+    }
+
+    public int getDefensePoints() {
+        return defensePoints;
+    }
+
     //fields:
     protected String name;
-    protected Integer healthPool;
-    protected Integer healthAmount;
-    protected Integer attackPoints;
-    protected Integer defensePoints;
+    protected Health health;
+    protected int attackPoints;
+    protected int defensePoints;
+    protected MessageCallback messageCB;
 
     //constructors:
-    protected Unit
-    (char tile, String name, Integer healthPool, Integer healthAmount, Integer attackPoints, Integer defensePoints){
+
+    protected Unit (char tile, String name, int healthCapacity, int attack, int defense)
+   {
         super (tile);
         this.name = name;
-        this.healthPool = healthPool;
-        this.healthAmount = healthAmount;
-        this.attackPoints = attackPoints;
-        this.defensePoints = defensePoints;
+        this.health = new Health(healthCapacity,healthCapacity);
+        this.attackPoints = attack;
+        this.defensePoints = defense;
     }
 
 
     //methods:
     protected void initialize(Position position, MessageCallback messageCallback){
-        ...
+        super.initialize(position);
+        this.messageCB = messageCallback;
     }
 
     protected int attack(){
-		...
+        int attackRoll = (int)(Math.random()*(getAttackPoints()+1));
+        messageCB.send(getName() + " rolled " + attackRoll + " attack points.");
+        return attackRoll;
     }
 
     public int defend(){
-        ...
+        int defenseRoll = (int)(Math.random()*(getDefensePoints()+1));
+        messageCB.send(getName() + " rolled " + defenseRoll + " defense points.");
+        return defenseRoll;
     }
 
     // Should be automatically called once the unit finishes its turn
@@ -45,11 +66,11 @@ public abstract class Unit extends Tile{
 
     // This unit attempts to interact with another tile.
     public void interact(Tile tile){
-		...
+		tile.accept(this);
     }
 
     public void visit(Empty e){
-		...
+		replacePosition(e);
     }
 
     public abstract void visit(Player p);
@@ -57,11 +78,17 @@ public abstract class Unit extends Tile{
 
     // Combat against another unit.
     protected void battle(Unit u){
-        ...
+        messageCB.send(getName() + " engaged in combat with " + u.getName() + ".");
+        int result = attack() - u.defend();
+        if(result > 0){
+            u.getHealth().setHealthAmount(u.getHealth().getHealthAmount() - result);
+            messageCB.send(getName() + " dealt " + result + " damage to " + u.getName() + ".");
+        }
+        messageCB.send(getName() + " dealt 0 damage to " + u.getName() + ".");
     }
 
 
     public String describe() {
-        return String.format("%s\t\tHealth: %s\t\tAttack: %d\t\tDefense: %d", getName(), getHealth(), getAttack(), getDefense());
+        return String.format("%s\t\tHealth: %s\t\tAttack: %d\t\tDefense: %d", getName(), getHealth(), getAttackPoints(), getDefensePoints());
     }
 }
