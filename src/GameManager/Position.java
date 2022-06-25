@@ -32,6 +32,7 @@ public class Position {
         this.y = y;
     }
 
+
     public int compareTo(Position p) {
         if (p.getX() == getX() && p.getY() == getY())
             return 0;
@@ -47,7 +48,6 @@ public class Position {
                     return 1;
             }
         }
-
     }
 
     public Position moveLeft() {
