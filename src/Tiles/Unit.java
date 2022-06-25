@@ -1,7 +1,6 @@
 package Tiles;
 
 import GameManager.*;
-import java.util.*;
 
 public abstract class Unit extends Tile{
 
@@ -24,9 +23,19 @@ public abstract class Unit extends Tile{
     //fields:
     protected String name;
     protected Health health;
+
+    public void setAttackPoints(int attackPoints) {
+        this.attackPoints = attackPoints;
+    }
+
+    public void setDefensePoints(int defensePoints) {
+        this.defensePoints = defensePoints;
+    }
+
     protected int attackPoints;
     protected int defensePoints;
     protected MessageCallback messageCB;
+    protected EnemyDeathCallback enemyDeathCB;
 
     //constructors:
 
@@ -82,6 +91,8 @@ public abstract class Unit extends Tile{
 
     // Combat against another unit.
     protected void battle(Unit u){
+        describe();
+        u.describe();
         messageCB.send(getName() + " engaged in combat with " + u.getName() + ".");
         messageCB.send(describe());
         messageCB.send(u.describe());
@@ -90,7 +101,8 @@ public abstract class Unit extends Tile{
             u.getHealth().setHealthAmount(u.getHealth().getHealthAmount() - result);
             messageCB.send(getName() + " dealt " + result + " damage to " + u.getName() + ".");
         }
-        messageCB.send(getName() + " dealt 0 damage to " + u.getName() + ".");
+        else
+            messageCB.send(getName() + " dealt 0 damage to " + u.getName() + ".");
     }
 
 
