@@ -4,5 +4,5 @@ import Tiles.*;
 import java.util.*;
 
 public interface EnemyDeathCallback {
-    void call(Enemy e);
+    void call(Enemy e, Player p);
 }

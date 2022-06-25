@@ -27,7 +27,6 @@ public abstract class Unit extends Tile{
     protected int attackPoints;
     protected int defensePoints;
     protected MessageCallback messageCB;
-    protected EnemyDeathCallback enemyDeathCB;
 
     //constructors:
 
@@ -82,12 +81,14 @@ public abstract class Unit extends Tile{
     public abstract void visit(Enemy e);
 
     // Combat against another unit.
-    protected void battle(Unit u) {
+    protected void battle(Unit u){
+        describe();
+        u.describe();
         messageCB.send(getName() + " engaged in combat with " + u.getName() + ".");
         messageCB.send(describe());
         messageCB.send(u.describe());
         int result = attack() - u.defend();
-        if (result > 0) {
+        if(result > 0){
             u.getHealth().setHealthAmount(u.getHealth().getHealthAmount() - result);
             messageCB.send(getName() + " dealt " + result + " damage to " + u.getName() + ".");
         }
