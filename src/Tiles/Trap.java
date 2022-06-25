@@ -10,16 +10,41 @@ public class Trap extends Enemy{
     protected Integer invisibilityTime;
     protected Integer tickCount;
     protected Boolean visible;
+    protected final char visTrapChar;
 
     //constructor:
-    protected Trap(char tile, String name, Integer healthPool, Integer healthAmount, Integer attackPoints, Integer defensePoints) {
-        super(tile, name, healthPool, healthAmount, attackPoints, defensePoints);
+    public Trap(char tile, String name, Integer healthPool, Integer attackPoints, Integer defensePoints, Integer experienceValue, Integer visTime, Integer invisTime) {
+        super(tile, name, healthPool, attackPoints, defensePoints, experienceValue);
+        this.visibilityTime = visTime;
+        this.invisibilityTime = invisTime;
+        this.tickCount = 0;
+        this.visible = true;
+        this.visTrapChar = tile;
+    }
+
+    public void setTile(){
+        if (visible)
+            this.tile = visTrapChar;
+        else
+            this.tile = '.';
     }
 
     @Override
     public Position enemyTurn(Player p) {
-        return null;
+        visible = (visibilityTime > tickCount);
+        this.setTile();
+        if (tickCount == (visibilityTime + invisibilityTime)){
+            tickCount = 0;
+        }
+        else {
+            tickCount ++;
+        }
+        if (this.getPosition().range(p.getPosition()) < 2) {
+            visit(p);
+        }
+        return getPosition();
     }
+
 
     @Override
     public void processStep() {

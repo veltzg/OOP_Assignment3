@@ -64,6 +64,10 @@ public abstract class Unit extends Tile{
     // What happens when the unit dies
     public abstract void onDeath();
 
+    public boolean isAlive(){
+        return (getHealth().getHealthAmount() > 0);
+    }
+
     // This unit attempts to interact with another tile.
     public void interact(Tile tile){
 		tile.accept(this);
@@ -79,6 +83,8 @@ public abstract class Unit extends Tile{
     // Combat against another unit.
     protected void battle(Unit u){
         messageCB.send(getName() + " engaged in combat with " + u.getName() + ".");
+        messageCB.send(describe());
+        messageCB.send(u.describe());
         int result = attack() - u.defend();
         if(result > 0){
             u.getHealth().setHealthAmount(u.getHealth().getHealthAmount() - result);
