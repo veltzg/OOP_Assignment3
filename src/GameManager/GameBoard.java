@@ -16,11 +16,11 @@ public class GameBoard {
 
     public Tile get(int x, int y) {
         for(Tile t : tiles){
-            if (t.getPosition().equals(Position.at(x, y))){
+            if ((t.getPosition().getX() == x) && (t.getPosition().getY() == y)){
                 return t;
             }
         }
-        // Throw an exception if no such tile.
+        throw new NoSuchElementException();
     }
 
     public void remove(Enemy e) {
@@ -32,6 +32,6 @@ public class GameBoard {
     @Override
     public String toString() {
         tiles = tiles.stream().sorted().collect(Collectors.toList());
-        // TODO: Implement me
+        return ("To Implement");
     }
 }

@@ -8,7 +8,6 @@ public abstract class Enemy extends Unit {
     //fields:
     protected Integer experienceValue;
 
-    public EnemyDeathCallback enemyDeathCB;
 
     //constructor:
     public Enemy(char tile, String name, Integer healthCapacity, Integer attackPoints, Integer defensePoints, Integer experienceValue) {
@@ -25,10 +24,6 @@ public abstract class Enemy extends Unit {
         return experienceValue;
     }
 
-    public void onDeath(Player player) {
-        messageCB.send(getName() + " is dead. " + player.getName() + " gained " + getExperienceValue() + " Experience");
-        enemyDeathCB.call(this);
-    }
 
     @Override
     public void visit(Enemy e) {
@@ -42,7 +37,7 @@ public abstract class Enemy extends Unit {
     public void visit(Player p) { // the enemy attack the player.
         this.battle(p);
         if (!p.isAlive()) {
-            p.onDeath(this);
+            p.onDeath();
         }
     }
 
@@ -53,12 +48,7 @@ public abstract class Enemy extends Unit {
     public abstract Position enemyTurn(Player p);
 
     @Override
-    public void onDeath() {
-        messageCB.send(getName() + " is dead.");
-        enemyDeathCB.call();
-    }// X gained X points?
-
-
+    public void onDeath() {} // Make sure to remove from GameBoard
 
     public String describe() {
         return String.format("%s\t\tExperience Value: %s", super.describe(), getExperienceValue());
