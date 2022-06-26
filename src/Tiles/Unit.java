@@ -33,6 +33,7 @@ public abstract class Unit extends Tile{
     protected int attackPoints;
     protected int defensePoints;
     protected MessageCallback messageCB;
+    protected EnemyDeathCallback enemyDeathCB;
 
     //constructors:
 

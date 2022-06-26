@@ -19,7 +19,7 @@ public abstract class Tile implements Comparable<Tile> {
     //methods:
 
     protected void initialize(Position position){
-        this.position = position;
+        setPosition(position);
     }
 
     public char getTile() {
