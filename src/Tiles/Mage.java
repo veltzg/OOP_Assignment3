@@ -66,8 +66,8 @@ public class Mage extends Player{
     private final String ABILITY_NAME = "Blizzard";
 
     //constructor:
-    protected Mage(String name, Integer healthPool, Integer healthAmount, Integer attackPoints, Integer defensePoints, Integer manaPool, Integer manaCost, Integer spellPower, Integer hitsCount, Integer abilityRange) {
-        super(name, healthPool, attackPoints, defensePoints);
+    public Mage(String name, Integer healthCapacity, Integer attackPoints, Integer defensePoints, Integer manaPool, Integer manaCost, Integer spellPower, Integer hitsCount, Integer abilityRange) {
+        super(name, healthCapacity, attackPoints, defensePoints);
         this.manaPool = manaPool;
         this.manaCost = manaCost;
         this.spellPower = spellPower;
