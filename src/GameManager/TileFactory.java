@@ -38,8 +38,8 @@ public class TileFactory {
 
     private List<Supplier<Player>> initPlayers() {
         return Arrays.asList(
-                () -> new Warrior("Jon Snow", 300, 30, 4, 3, 3),
-                () -> new Warrior("The Hound", 400, 20, 6, 5, 5),
+                () -> new Warrior("Jon Snow", 300, 30, 4, 3),
+                () -> new Warrior("The Hound", 400, 20, 6, 5),
                 () -> new Mage("Melisandre", 100, 5, 1, 300, 30, 15, 5, 6),
                 () -> new Mage("Thoros of Myr", 250, 25, 4, 150, 20, 20, 3, 4),
                 () -> new Rogue("Arya Stark", 150, 40, 2, 20),

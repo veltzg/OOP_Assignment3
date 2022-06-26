@@ -13,8 +13,8 @@ public class Warrior extends Player{
     private final Integer castingRange = 3;
 
     //constructors:
-    public Warrior(String name, Integer healthPool, Integer healthAmount, Integer attackPoints, Integer defensePoints, Integer coolDown) {
-        super(name, healthPool, attackPoints, defensePoints);
+    public Warrior(String name, Integer healthCapacity, Integer attackPoints, Integer defensePoints, Integer coolDown) {
+        super(name, healthCapacity, attackPoints, defensePoints);
         this.abilityCooldown = coolDown;
         this.remainingCooldown = 0;
     }
@@ -53,11 +53,5 @@ public class Warrior extends Player{
         getHealth().setHealthAmount(getHealth().getHealthPool());
         setAttackPoints(getAttackPoints() + 2 * getPlayerLevel());
         setDefensePoints(getDefensePoints() + 1 * getPlayerLevel());
-    }
-
-    @Override
-    public String describe(){
-        String s = super.describe();
-        return String.format("%s\t\tCooldown: %s/%s ", s, remainingCooldown, abilityCooldown);
     }
 }
