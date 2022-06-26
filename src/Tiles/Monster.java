@@ -63,5 +63,9 @@ public class Monster extends Enemy{
         throw new NoSuchElementException();
     }
 
+    public String describe() {
+        return String.format("%s\t\tVision Range: %s", super.describe(),visionRange);
+    }
+
 
 }

@@ -27,12 +27,19 @@ public abstract class Unit extends Tile{
         this.defensePoints = defensePoints;
     }
 
+    public void setEnemyDeathCB(EnemyDeathCallback enemyDeathCB) {
+        this.enemyDeathCB = enemyDeathCB;
+    }
+
     //fields:
     protected String name;
     protected Health health;
     protected int attackPoints;
     protected int defensePoints;
     protected MessageCallback messageCB;
+
+
+
     protected EnemyDeathCallback enemyDeathCB;
 
     //constructors:

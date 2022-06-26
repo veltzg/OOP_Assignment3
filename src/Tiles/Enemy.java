@@ -16,22 +16,18 @@ public abstract class Enemy extends Unit {
     }
 
     //methods:
-    public void setEnemyDeathCB(EnemyDeathCallback enemyDeathCB) {
-        this.enemyDeathCB = enemyDeathCB;
-    }
 
     public Integer getExperienceValue() {
         return experienceValue;
     }
 
+    public void accept(Unit u) { // the player attack the enemy.
+        u.visit(this);
+    }
 
     @Override
     public void visit(Enemy e) {
         this.replacePosition(e);
-    }
-
-    public void accept(Unit u) { // the player attack the enemy.
-        u.visit(this);
     }
 
     public void visit(Player p) { // the enemy attack the player.

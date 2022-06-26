@@ -52,4 +52,14 @@ public class Warrior extends Player{
         setAttackPoints(getAttackPoints() + 2 * getPlayerLevel());
         setDefensePoints(getDefensePoints() + 1 * getPlayerLevel());
     }
+
+    @Override
+    public void castAbility() {
+
+    }
+
+    @Override
+    public void accept(Unit unit) {
+
+    }
 }

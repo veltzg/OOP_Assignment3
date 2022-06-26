@@ -22,6 +22,8 @@ public class Trap extends Enemy{
         this.visTrapChar = tile;
     }
 
+    //methods:
+
     public void setTile(){
         if (visible)
             this.tile = visTrapChar;
@@ -51,5 +53,7 @@ public class Trap extends Enemy{
 
     }
 
-    //methods:
+
+
+
 }
