@@ -53,7 +53,7 @@ public abstract class Player extends Unit implements HeroicUnit {
         defensePoints = defensePoints + DEFENSE_BONUS * playerLevel;
     }
 
-    public abstract void castAbility();
+    public abstract void castAbility(List<Enemy> enemies);
     public abstract void processStep();
     public  void onDeath(){
         setTile('X');
@@ -66,8 +66,8 @@ public abstract class Player extends Unit implements HeroicUnit {
             replacePosition(e);
             e.onDeath();
             enemyDeathCB.call(e, this);
-            processStep();
         }
+        processStep();
     }
 
     public List<Enemy> findEnemiesWithingRange(List<Enemy> enemies, int range) {
@@ -94,5 +94,10 @@ public abstract class Player extends Unit implements HeroicUnit {
 
     public String describe(){
         return String.format("%s\t\tHealth: %s\t\tAttack: %d\t\tDefense: %d", super.describe(), getPlayerLevel(), getExperience());
+    }
+
+    @Override
+    public void accept(Unit other){
+        other.visit(this);
     }
 }
