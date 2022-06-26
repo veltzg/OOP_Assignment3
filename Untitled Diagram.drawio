@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-06-26T18:34:26.458Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36" etag="OyeXjWKxCQ5WcDInapar" version="20.0.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-06-26T18:40:01.082Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36" etag="aTivQqFCdb6sXSUYpEum" version="20.0.3" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="587" dy="470" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="880" dy="706" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -15,7 +15,7 @@
         <mxCell id="zkfFHV4jXpPFQw0GAbJ--4" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="zkfFHV4jXpPFQw0GAbJ--0" vertex="1">
           <mxGeometry y="116" width="230" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="zkfFHV4jXpPFQw0GAbJ--5" value="+ attack(): int&lt;br&gt;&lt;br&gt;+ defend(): int&lt;br&gt;&lt;br&gt;+ &lt;i&gt;processStep()&lt;/i&gt;: void&lt;br&gt;&lt;br&gt;+&amp;nbsp;&lt;i&gt;onDeath()&lt;/i&gt;: void&lt;br&gt;&lt;br&gt;+ isAlive(): boolean&lt;br&gt;&lt;br&gt;+ interact(tile: Tile): void&lt;br&gt;&lt;br&gt;+ visit(e: Empty): void&lt;br&gt;&lt;br&gt;+ &lt;i&gt;visit&lt;/i&gt;(p: Player): void&lt;br&gt;&lt;br&gt;+ &lt;i&gt;visit&lt;/i&gt;(e: Enemy): void&lt;br&gt;&lt;br&gt;+ battle(u: Unit): void&lt;br&gt;&lt;br&gt;+ describe(): String" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="zkfFHV4jXpPFQw0GAbJ--0" vertex="1">
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--5" value="+ attack(): int&lt;br&gt;&lt;br&gt;+ defend(): int&lt;br&gt;&lt;br&gt;&lt;i&gt;+ processStep(): void&lt;br&gt;&lt;/i&gt;&lt;br&gt;&lt;i&gt;+&amp;nbsp;onDeath(): void&lt;br&gt;&lt;/i&gt;&lt;br&gt;+ isAlive(): boolean&lt;br&gt;&lt;br&gt;+ interact(Tile tile): void&lt;br&gt;&lt;br&gt;+ visit(Empty e): void&lt;br&gt;&lt;br&gt;&lt;i&gt;+ visit(Player p): void&lt;br&gt;&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ visit(Enemy e): void&lt;br&gt;&lt;/i&gt;&lt;br&gt;+ battle(Unit u): void&lt;br&gt;&lt;br&gt;+ describe(): String" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="zkfFHV4jXpPFQw0GAbJ--0" vertex="1">
           <mxGeometry y="124" width="230" height="312" as="geometry" />
         </mxCell>
         <mxCell id="zkfFHV4jXpPFQw0GAbJ--6" value="Player" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -29,25 +29,25 @@
         <mxCell id="zkfFHV4jXpPFQw0GAbJ--9" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="zkfFHV4jXpPFQw0GAbJ--6" vertex="1">
           <mxGeometry y="66" width="420" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="zkfFHV4jXpPFQw0GAbJ--11" value="+ levelUp(): void&lt;br&gt;&lt;br&gt;+ &lt;i&gt;castAbility(List&amp;lt;Enemy&amp;gt; enemies)&lt;/i&gt;: void&lt;br&gt;&lt;br&gt;+ &lt;i&gt;processStep()&lt;/i&gt;: void&lt;br&gt;&lt;br&gt;+ onDeath(): void&lt;br&gt;&lt;br&gt;+ accept(Unit u): void&lt;br&gt;&lt;br&gt;+ visit(Player p): void&lt;br&gt;&lt;br&gt;+ visit(Enemy e): void&lt;br&gt;&lt;br&gt;+ findEnemiesWithinRange(List&amp;lt;Enemy&amp;gt;enemies, range: int): List&amp;lt;Enemy&amp;gt;&lt;br&gt;&lt;br&gt;+ attackWithAbility(Enemy e,&amp;nbsp; Integer attackPower): void&lt;br&gt;&lt;br&gt;+ describe(): String" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="zkfFHV4jXpPFQw0GAbJ--6" vertex="1">
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--11" value="+ levelUp(): void&lt;br&gt;&lt;br&gt;&lt;i&gt;+ castAbility(List&amp;lt;Enemy&amp;gt; enemies): void&lt;br&gt;&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ processStep(): void&lt;br&gt;&lt;/i&gt;&lt;br&gt;+ onDeath(): void&lt;br&gt;&lt;br&gt;+ accept(Unit u): void&lt;br&gt;&lt;br&gt;+ visit(Player p): void&lt;br&gt;&lt;br&gt;+ visit(Enemy e): void&lt;br&gt;&lt;br&gt;+ findEnemiesWithinRange(List&amp;lt;Enemy&amp;gt;enemies, range: int): List&amp;lt;Enemy&amp;gt;&lt;br&gt;&lt;br&gt;+ attackWithAbility(Enemy e,&amp;nbsp; Integer attackPower): void&lt;br&gt;&lt;br&gt;+ describe(): String" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="zkfFHV4jXpPFQw0GAbJ--6" vertex="1">
           <mxGeometry y="74" width="420" height="286" as="geometry" />
         </mxCell>
         <mxCell id="zkfFHV4jXpPFQw0GAbJ--13" value="Enemy" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="830" y="860" width="200" height="260" as="geometry">
+          <mxGeometry x="830" y="860" width="220" height="260" as="geometry">
             <mxRectangle x="340" y="380" width="170" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="zkfFHV4jXpPFQw0GAbJ--14" value="- experienceValue: int" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zkfFHV4jXpPFQw0GAbJ--13" vertex="1">
-          <mxGeometry y="26" width="200" height="26" as="geometry" />
+          <mxGeometry y="26" width="220" height="26" as="geometry" />
         </mxCell>
         <mxCell id="zkfFHV4jXpPFQw0GAbJ--15" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="zkfFHV4jXpPFQw0GAbJ--13" vertex="1">
-          <mxGeometry y="52" width="200" height="8" as="geometry" />
+          <mxGeometry y="52" width="220" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="zhKCruAc7lUHeAgAV0-3-2" value="+ onDeath(): void&lt;br&gt;&lt;br&gt;+ accept(u: Unit): void&lt;br&gt;&lt;br&gt;+ visit(p: Player): void&lt;br&gt;&lt;br&gt;+ visit(e: Enemy): void&lt;br&gt;&lt;br&gt;+ gameEnemyTick(p: Player): Position&lt;br&gt;&lt;br&gt;+ &lt;i&gt;enemyTurn&lt;/i&gt;(p: Player): Position&lt;br&gt;&lt;br&gt;+ describe(): String" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="zkfFHV4jXpPFQw0GAbJ--13" vertex="1">
-          <mxGeometry y="60" width="200" height="200" as="geometry" />
+        <mxCell id="zhKCruAc7lUHeAgAV0-3-2" value="+ onDeath(): void&lt;br&gt;&lt;br&gt;+ accept(Unit u): void&lt;br&gt;&lt;br&gt;+ visit(Player p): void&lt;br&gt;&lt;br&gt;+ visit(Enemy e): void&lt;br&gt;&lt;br&gt;+ gameEnemyTick(Player p): Position&lt;br&gt;&lt;br&gt;&lt;i&gt;+ enemyTurn(Player p): Position&lt;br&gt;&lt;/i&gt;&lt;br&gt;+ describe(): String" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="zkfFHV4jXpPFQw0GAbJ--13" vertex="1">
+          <mxGeometry y="60" width="220" height="200" as="geometry" />
         </mxCell>
         <mxCell id="zkfFHV4jXpPFQw0GAbJ--17" value="Tile" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="479" y="40" width="192" height="230" as="geometry">
+          <mxGeometry x="479" y="40" width="192" height="216" as="geometry">
             <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -57,7 +57,7 @@
         <mxCell id="zkfFHV4jXpPFQw0GAbJ--23" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="zkfFHV4jXpPFQw0GAbJ--17" vertex="1">
           <mxGeometry y="64" width="192" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="zkfFHV4jXpPFQw0GAbJ--24" value="+ initalize(position: Position): void&lt;br&gt;&lt;br&gt;+ &lt;i&gt;accept&lt;/i&gt;(unit: Unit): void&lt;br&gt;&lt;br&gt;+ compareTo(tile: Tile): int&lt;br&gt;&lt;br&gt;+ toString(): String&lt;br&gt;&lt;br&gt;+ replacePostion(other: Tile): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="zkfFHV4jXpPFQw0GAbJ--17" vertex="1">
+        <mxCell id="zkfFHV4jXpPFQw0GAbJ--24" value="+ initalize(Position position): void&lt;br&gt;&lt;br&gt;&lt;i&gt;+ accept(Unit&amp;nbsp;&lt;/i&gt;&lt;i&gt;unit&lt;/i&gt;&lt;i&gt;): void&lt;br&gt;&lt;/i&gt;&lt;br&gt;+ compareTo(Tile tile): int&lt;br&gt;&lt;br&gt;+ toString(): String&lt;br&gt;&lt;br&gt;+ replacePostion(Tile other): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="zkfFHV4jXpPFQw0GAbJ--17" vertex="1">
           <mxGeometry y="72" width="192" height="144" as="geometry" />
         </mxCell>
         <mxCell id="zhKCruAc7lUHeAgAV0-3-3" value="Empty" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -93,7 +93,7 @@
         <mxCell id="zhKCruAc7lUHeAgAV0-3-16" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="zhKCruAc7lUHeAgAV0-3-14" vertex="1">
           <mxGeometry y="52" width="200" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="zhKCruAc7lUHeAgAV0-3-17" value="+&amp;nbsp;enemyTurn(p: Player): Position&lt;br&gt;&lt;br&gt;+&amp;nbsp;randomMove(): Position&lt;br&gt;&lt;br&gt;+&amp;nbsp;chase(p: Player): Position&lt;br&gt;&lt;br&gt;+&amp;nbsp;processStep(): void&lt;br&gt;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="zhKCruAc7lUHeAgAV0-3-14" vertex="1">
+        <mxCell id="zhKCruAc7lUHeAgAV0-3-17" value="+&amp;nbsp;enemyTurn(Player p): Position&lt;br&gt;&lt;br&gt;+&amp;nbsp;randomMove(): Position&lt;br&gt;&lt;br&gt;+&amp;nbsp;chase(p: Player): Position&lt;br&gt;&lt;br&gt;+&amp;nbsp;processStep(): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="zhKCruAc7lUHeAgAV0-3-14" vertex="1">
           <mxGeometry y="60" width="200" height="120" as="geometry" />
         </mxCell>
         <mxCell id="zhKCruAc7lUHeAgAV0-3-18" value="Trap" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -107,7 +107,7 @@
         <mxCell id="zhKCruAc7lUHeAgAV0-3-20" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="zhKCruAc7lUHeAgAV0-3-18" vertex="1">
           <mxGeometry y="88" width="200" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="zhKCruAc7lUHeAgAV0-3-21" value="+&amp;nbsp;enemyTurn(p: Player): Position&lt;br&gt;&lt;br&gt;+&amp;nbsp;setTile(): void&lt;br&gt;&lt;br&gt;+&amp;nbsp;processStep(): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="zhKCruAc7lUHeAgAV0-3-18" vertex="1">
+        <mxCell id="zhKCruAc7lUHeAgAV0-3-21" value="+&amp;nbsp;enemyTurn(Player p): Position&lt;br&gt;&lt;br&gt;+&amp;nbsp;setTile(): void&lt;br&gt;&lt;br&gt;+&amp;nbsp;processStep(): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" parent="zhKCruAc7lUHeAgAV0-3-18" vertex="1">
           <mxGeometry y="96" width="200" height="86" as="geometry" />
         </mxCell>
         <mxCell id="S_AOafVbOgzcvs6rEPCG-0" value="Warrior" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
