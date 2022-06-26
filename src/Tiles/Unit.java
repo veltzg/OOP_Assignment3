@@ -17,8 +17,14 @@ public abstract class Unit extends Tile{
         return attackPoints;
     }
 
-    public int getDefensePoints() {
-        return defensePoints;
+    public int getDefensePoints() { return defensePoints; }
+
+    public void setAttackPoints(int attackPoints) {
+        this.attackPoints = attackPoints;
+    }
+
+    public void setDefensePoints(int defensePoints) {
+        this.defensePoints = defensePoints;
     }
 
     //fields:
