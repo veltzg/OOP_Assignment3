@@ -54,4 +54,10 @@ public class Warrior extends Player{
         setAttackPoints(getAttackPoints() + 2 * getPlayerLevel());
         setDefensePoints(getDefensePoints() + 1 * getPlayerLevel());
     }
+
+    @Override
+    public String describe() {
+        String s = super.describe();
+        return String.format("%s\t\tCooldown: %s/%s ", s, remainingCooldown, abilityCooldown);
+    }
 }

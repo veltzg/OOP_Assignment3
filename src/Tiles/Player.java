@@ -93,7 +93,8 @@ public abstract class Player extends Unit implements HeroicUnit {
 
 
     public String describe(){
-        return String.format("%s\t\tHealth: %s\t\tAttack: %d\t\tDefense: %d", super.describe(), getPlayerLevel(), getExperience());
+        String s = super.describe();
+        return String.format("%s\t\tLevel: %d\t\tExperience: %d/%d", s, getPlayerLevel(), getExperience(), EXPERIENCE_BONUS * playerLevel );
     }
 
     @Override
