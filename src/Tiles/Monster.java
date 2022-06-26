@@ -44,18 +44,22 @@ public class Monster extends Enemy{
     public Position chase(Player p){
         int dx = this.getPosition().getX() - p.getPosition().getX();
         int dy = this.getPosition().getY() - p.getPosition().getY();
+        Position posToReturn;
         if (Math.abs(dx) > Math.abs(dy)) {
             if (dx > 0)
-                return getPosition().moveLeft();
+                posToReturn = getPosition().moveLeft();
             else
-                return getPosition().moveRight();
+                posToReturn = getPosition().moveRight();
         }
         else {
             if (dy > 0)
-                return getPosition().moveUp();
+                posToReturn = getPosition().moveUp();
             else
-                return getPosition().moveDown();
+                posToReturn = getPosition().moveDown();
         }
+        if (p.getPosition().equals(posToReturn))
+            visit(p);
+        return posToReturn;
     }
 
     @Override

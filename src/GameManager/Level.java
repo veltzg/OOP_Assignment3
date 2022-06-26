@@ -6,26 +6,26 @@ import java.util.*;
 public class Level {
 
     //fields:
-    private GameBoard gameBoard;
+    private Board board;
     private Player player;
-    private List<Enemy> enemies;
+    private List<Enemy> levelEnemyList;
     private Position startPosition;
 
     //constructor:
-    public Level(GameBoard gameBoard,Player player) {
-        this.gameBoard=gameBoard;
+    public Level(Board gameBoard,Player player) {
+        this.board =gameBoard;
         this.player=player;
-        this.enemies=new ArrayList<>();
+        this.levelEnemyList = new ArrayList<>();
     }
 
     //methods:
 
-    public GameBoard getGameBoard() {
-        return gameBoard;
+    public Board getBoard() {
+        return board;
     }
 
-    public void setGameBoard(GameBoard gameBoard) {
-        this.gameBoard = gameBoard;
+    public void setBoard(Board board) {
+        this.board = board;
     }
 
     public Player getPlayer() {
@@ -45,7 +45,12 @@ public class Level {
     }
 
     public void addEnemy(Enemy e){
-        enemies.add(e);
+        levelEnemyList.add(e);
     }
 
+    public void removeEnemy(Enemy e) { levelEnemyList.remove(e);}
+
+    public List<Enemy> getLevelEnemyList() {
+        return levelEnemyList;
+    }
 }

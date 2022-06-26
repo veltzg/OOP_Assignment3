@@ -2,6 +2,8 @@ package Tiles;
 
 import GameManager.Position;
 
+import java.util.List;
+
 public class Boss extends Enemy implements HeroicUnit{
 
 
@@ -84,7 +86,7 @@ public class Boss extends Enemy implements HeroicUnit{
     public Position enemyTurn(Player p) {
         if (this.getPosition().range(p.getPosition()) < visionRange) {
             if (combatTicks == abilityFrequency) {
-                castAbility();
+               System.out.print("castAbility");
             }
             else {
                 combatTicks++;
@@ -95,14 +97,16 @@ public class Boss extends Enemy implements HeroicUnit{
             combatTicks = 0;
             return randomMove();
         }
-    }
-
-    @Override
-    public void castAbility() {
+        return null;
     }
 
 
     @Override
     public void processStep() {
+    }
+
+    @Override
+    public void castAbility(List<Enemy> enemies) {
+
     }
 }

@@ -4,19 +4,29 @@ import Tiles.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class GameBoard {
+public class Board {
+
     private List<Tile> tiles;
 
-    public GameBoard(Tile[][] board){
+    public Board(Tile[][] board){
         tiles = new ArrayList<>();
         for(Tile[] line : board){
             tiles.addAll(Arrays.asList(line));
         }
     }
 
-    public Tile get(int x, int y) {
+    public Tile getTile(int x, int y) {
         for(Tile t : tiles){
             if ((t.getPosition().getX() == x) && (t.getPosition().getY() == y)){
+                return t;
+            }
+        }
+        throw new NoSuchElementException();
+    }
+
+    public Tile getTile(Position p) {
+        for(Tile t : tiles){
+            if (t.getPosition()== p){
                 return t;
             }
         }
@@ -27,6 +37,10 @@ public class GameBoard {
         tiles.remove(e);
         Position p = e.getPosition();
         tiles.add(new Empty(p));
+    }
+
+    public void add(Tile t) {
+        tiles.add(t);
     }
 
     @Override

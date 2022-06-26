@@ -26,9 +26,7 @@ public abstract class Enemy extends Unit {
     }
 
     @Override
-    public void visit(Enemy e) {
-        this.replacePosition(e);
-    }
+    public void visit(Enemy e) {}
 
     public void visit(Player p) { // the enemy attack the player.
         this.battle(p);
@@ -44,7 +42,9 @@ public abstract class Enemy extends Unit {
     public abstract Position enemyTurn(Player p);
 
     @Override
-    public void onDeath() {} // Make sure to remove from GameBoard
+    public void onDeath() {
+
+    } // Make sure to remove from GameBoard
 
     public String describe() {
         return String.format("%s\t\tExperience Value: %s", super.describe(), getExperienceValue());
