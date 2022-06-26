@@ -21,6 +21,7 @@ public class Warrior extends Player{
 
     //methods:
 
+    @Override
     public void castAbility(List<Enemy> allEnemies){
         if(remainingCooldown > 0)
             messageCB.send(getName() + " tried to cast " + ABILITY_NAME + ", but there is a cooldown: " +  remainingCooldown + ".");
@@ -34,8 +35,9 @@ public class Warrior extends Player{
                 attackWithAbility(enemyToCast, (int) (0.1 * health.getHealthPool()));
             }
         }
-        processStep();
     }
+
+    @Override
     public void processStep(){
         if (remainingCooldown > 0){
             remainingCooldown -= 1;
@@ -54,12 +56,8 @@ public class Warrior extends Player{
     }
 
     @Override
-    public void castAbility() {
-
-    }
-
-    @Override
-    public void accept(Unit unit) {
-
+    public String describe(){
+        String s = super.describe();
+        return String.format("%s\t\tCooldown: %s/%s ", s, remainingCooldown, abilityCooldown);
     }
 }

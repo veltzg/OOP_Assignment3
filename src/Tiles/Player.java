@@ -11,20 +11,6 @@ public abstract class Player extends Unit implements HeroicUnit {
     protected final Integer ATTACK_BONUS = 4;
     protected final Integer DEFENSE_BONUS = 1;
 
-
-    //fields:
-    protected Integer experience;
-    protected Integer playerLevel;
-
-    //constructor:
-    protected Player(String name, Integer healthCapacity, Integer attackPoints, Integer defensePoints) {
-        super(PLAYER_TILE, name, healthCapacity, attackPoints, defensePoints);
-        this.experience = 0;
-        this.playerLevel = 1;
-    }
-
-    //methods:
-
     public Integer getExperience() {
         return experience;
     }
@@ -45,6 +31,19 @@ public abstract class Player extends Unit implements HeroicUnit {
         tile = t;
     }
 
+    //fields:
+    protected Integer experience;
+    protected Integer playerLevel;
+
+    //constructor:
+    protected Player(String name, Integer healthCapacity, Integer attackPoints, Integer defensePoints) {
+        super(PLAYER_TILE, name, healthCapacity, attackPoints, defensePoints);
+        this.experience = 0;
+        this.playerLevel = 1;
+    }
+
+    //methods:
+
     protected void levelUp(){
         experience = experience - playerLevel * EXPERIENCE_BONUS;
         playerLevel = playerLevel + LEVEL_INCREASE;
@@ -54,16 +53,12 @@ public abstract class Player extends Unit implements HeroicUnit {
         defensePoints = defensePoints + DEFENSE_BONUS * playerLevel;
     }
 
-    public abstract void castAbility();
-
+    public abstract void castAbility(List<Enemy> enemies);
     public abstract void processStep();
-
     public  void onDeath(){
         setTile('X');
     }
-
     public void visit(Player p){}
-
     public void visit(Enemy e){
         battle(e);
         if(!e.isAlive()){
@@ -71,7 +66,6 @@ public abstract class Player extends Unit implements HeroicUnit {
             replacePosition(e);
             e.onDeath();
             enemyDeathCB.call(e, this);
-            processStep();
         }
     }
 
@@ -99,5 +93,10 @@ public abstract class Player extends Unit implements HeroicUnit {
 
     public String describe(){
         return String.format("%s\t\tHealth: %s\t\tAttack: %d\t\tDefense: %d", super.describe(), getPlayerLevel(), getExperience());
+    }
+
+    @Override
+    public void accept(Unit other){
+        other.visit(this);
     }
 }
