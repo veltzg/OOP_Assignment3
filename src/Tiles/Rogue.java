@@ -18,6 +18,10 @@ public class Rogue extends Player {
 
     protected Integer currentEnergy;
     private final Integer MAX_ENERGY = 100;
+    private final Integer ATTACK_EXTRA = 3;
+    private final String ABILITY_NAME = "Fan of Knives";
+    private final Integer ABILITY_RANGE = 2;
+
 
     //constructor:
     public Rogue(String name, Integer healthCpacity, Integer attackPoints, Integer defensePoints, Integer cost) {
@@ -29,6 +33,24 @@ public class Rogue extends Player {
     //methods:
     @Override
     public void castAbility(List<Enemy> enemies) {
+        if(currentEnergy < cost)
+            messageCB.send((getName() + "  tried to cast " + ABILITY_NAME + ", but there was not enough energy: " + currentEnergy + "/" + MAX_ENERGY + "."));
+        else{
+            messageCB.send(getName() + " cast " + ABILITY_NAME + ".");
+            List<Enemy> enemiesAround = findEnemiesWithingRange(enemies, ABILITY_RANGE);
+            for (Enemy e:
+                 enemiesAround) {
+                attackWithAbility(e, getAttackPoints());
+            }
+        }
+    }
+
+    @Override
+    public void levelUp(){
+        super.levelUp();
+        messageCB.send(getName() + " reached level " + getPlayerLevel() +": +" + (getPlayerLevel() * HEALTH_BONUS) + " Health, +" + ((ATTACK_BONUS + ATTACK_EXTRA) * getPlayerLevel()) + " Attack, +" + (DEFENSE_BONUS* getPlayerLevel()) + " Defense");
+        setCurrentEnergy(MAX_ENERGY);
+        setAttackPoints(getAttackPoints() + ATTACK_EXTRA * getPlayerLevel());
     }
 
     @Override

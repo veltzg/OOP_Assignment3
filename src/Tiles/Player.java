@@ -67,7 +67,6 @@ public abstract class Player extends Unit implements HeroicUnit {
             e.onDeath();
             enemyDeathCB.call(e, this);
         }
-        processStep();
     }
 
     public List<Enemy> findEnemiesWithingRange(List<Enemy> enemies, int range) {
