@@ -8,26 +8,30 @@ public class Board {
 
     private List<Tile> tiles;
 
-    public Board(Tile[][] board){
+    public Board(){
         tiles = new ArrayList<>();
-        for(Tile[] line : board){
+    }
+
+    public void setTiles (Tile [][] board) {
+        for (Tile[] line : board) {
             tiles.addAll(Arrays.asList(line));
         }
     }
 
     public Tile getTile(int x, int y) {
-        for(Tile t : tiles){
-            if ((t.getPosition().getX() == x) && (t.getPosition().getY() == y)){
-                return t;
+        for(Tile tile : tiles){
+            if ((tile.getPosition().getX() == x) && (tile.getPosition().getY() == y)){
+                return tile;
             }
         }
         throw new NoSuchElementException();
     }
 
+    //returns a tile from a specifiedd locaion on board
     public Tile getTile(Position p) {
-        for(Tile t : tiles){
-            if (t.getPosition()== p){
-                return t;
+        for(Tile tile : tiles){
+            if (tile.getPosition() == p){
+                return tile;
             }
         }
         throw new NoSuchElementException();
@@ -41,6 +45,10 @@ public class Board {
 
     public void add(Tile t) {
         tiles.add(t);
+    }
+
+    private void arrangeBoard(){
+        tiles.sort(Tile::compareTo);
     }
 
     @Override

@@ -52,11 +52,9 @@ public class TileFactory {
         return playersList.stream().map(Supplier::get).collect(Collectors.toList());
     }
 
-    // TODO: Add additional callbacks of your choice
-
-    public Enemy produceEnemy(char tile, Position position) {
+    public Enemy produceEnemy(char tile, Position position, MessageCallback messageCB) {
         Enemy enemy = enemiesMap.get(tile).get();
-        enemy.setPosition(position);
+        enemy.initialize(position, messageCB);
         return enemy;
     }
 

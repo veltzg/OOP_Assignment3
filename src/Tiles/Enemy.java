@@ -7,7 +7,6 @@ public abstract class Enemy extends Unit {
 
     //fields:
     protected Integer experienceValue;
-
     public EnemyDeathCallback enemyDeathCB;
 
     //constructor:
@@ -17,6 +16,10 @@ public abstract class Enemy extends Unit {
     }
 
     //methods:
+
+    public void setEnemyDeathCB(EnemyDeathCallback enemyDeathCB) {
+        this.enemyDeathCB = enemyDeathCB;
+    }
 
     public Integer getExperienceValue() {
         return experienceValue;

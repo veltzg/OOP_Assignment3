@@ -10,27 +10,46 @@ public class GameFlow {
     private Player player;
     private List<Enemy> flowEnemyList;
     private MessageCallback messageCB;
+    private boolean levelIsDone;
+    private boolean gameOver;
 
     //constructors:
 
-    public GameFlow (Level level, Player player)
+    public GameFlow (Level level, Player player, MessageCallback messageCB)
     {
         this.level = level;
         this.player = player;
+        this.messageCB = messageCB;
+        this.player.initialize(level.getStartPosition(), messageCB);
         this.flowEnemyList = level.getLevelEnemyList();
+        this.levelIsDone = false;
+        this.gameOver = false;
+    }
+
+    public void setGameLevel (Level newLevel) {
+        this.level = newLevel;
+        this.player.initialize(newLevel.getStartPosition(), messageCB);
+        this.flowEnemyList = newLevel.getLevelEnemyList();
+        this.levelIsDone = false;
+        for (Enemy enemy: flowEnemyList) {
+            enemy.setEnemyDeathCB((enemy1) -> this.enemyIsDead(enemy));
+        }
     }
 
     public void gameTick(char c) {
         playerMove(c);
         player.processStep();
         if (flowEnemyList.size() == 0) {
+            levelIsDone = true;
             System.out.print("to move level or end game");
         }
         for (Enemy e : flowEnemyList) {
             Position pos = e.enemyTurn(player);
             e.interact(level.getBoard().getTile(pos));
-            if (!player.isAlive())
+            if (!player.isAlive()){
+                gameOver = true;
                 System.out.print("to end game somehow");
+            }
         }
     }
 
@@ -70,4 +89,6 @@ public class GameFlow {
         player.replacePosition(empty);
         messageCB.send(e.getName() + " is dead. "+ player.getName() +" gained "+ e.getExperienceValue() +" Experience");
     }
+
+
 }

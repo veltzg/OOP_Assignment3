@@ -7,14 +7,12 @@ public class Level {
 
     //fields:
     private Board board;
-    private Player player;
     private List<Enemy> levelEnemyList;
     private Position startPosition;
 
     //constructor:
-    public Level(Board gameBoard,Player player) {
-        this.board =gameBoard;
-        this.player=player;
+    public Level(Board gameBoard) {
+        this.board = gameBoard;
         this.levelEnemyList = new ArrayList<>();
     }
 
@@ -26,14 +24,6 @@ public class Level {
 
     public void setBoard(Board board) {
         this.board = board;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     public Position getStartPosition() {
