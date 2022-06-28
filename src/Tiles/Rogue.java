@@ -16,7 +16,7 @@ public class Rogue extends Player {
     private final Integer MAX_ENERGY = 100;
 
     //constructor:
-    protected Rogue(String name, Integer healthCpacity, Integer attackPoints, Integer defensePoints, Integer cost) {
+    public Rogue(String name, Integer healthCpacity, Integer attackPoints, Integer defensePoints, Integer cost) {
         super(name, healthCpacity, attackPoints, defensePoints);
         this.cost = cost;
         this.currentEnergy = MAX_ENERGY;
