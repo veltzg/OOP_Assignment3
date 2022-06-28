@@ -1,7 +1,4 @@
-package Tiles;
-
-import GameManager.*;
-import java.util.*;
+package BusinessLayer.Tiles;
 
 public class Wall extends Tile{
     private static final char wallCharTile = '#';

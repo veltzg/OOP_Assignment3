@@ -1,4 +1,4 @@
-package Tiles;
+package BusinessLayer.Tiles;
 
 import java.util.List;
 

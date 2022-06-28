@@ -1,4 +1,4 @@
-package Tiles;
+package BusinessLayer.Tiles;
 
 import java.util.*;
 
@@ -64,7 +64,7 @@ public abstract class Player extends Unit implements HeroicUnit {
     public void visit(Enemy e){
         battle(e);
         if(!e.isAlive()){
-            enemyDeathCB.call(e);
+            e.onDeath();
         }
     }
 

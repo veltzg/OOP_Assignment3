@@ -1,6 +1,6 @@
-package GameManager;
+package BusinessLayer.GameManager;
 
-import Tiles.*;
+import BusinessLayer.Tiles.*;
 import java.util.*;
 
 public class GameFlow {

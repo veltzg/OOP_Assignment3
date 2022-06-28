@@ -1,7 +1,4 @@
-package Tiles;
-
-import GameManager.*;
-import java.util.*;
+package BusinessLayer.Tiles;
 
 public class Trap extends Enemy{
 

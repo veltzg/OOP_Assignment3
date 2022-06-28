@@ -1,6 +1,5 @@
-package Tiles;
+package BusinessLayer.Tiles;
 
-import GameManager.*;
 import java.util.*;
 
 public class Rogue extends Player {

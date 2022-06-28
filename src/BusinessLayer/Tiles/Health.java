@@ -1,7 +1,4 @@
-package Tiles;
-
-import Tiles.*;
-import java.util.*;
+package BusinessLayer.Tiles;
 
 public class Health {
     protected int pool;

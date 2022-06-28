@@ -1,7 +1,6 @@
-package Tiles;
+package BusinessLayer.Tiles;
 
-import GameManager.*;
-import java.util.*;
+import BusinessLayer.GameManager.*;
 
 public abstract class Enemy extends Unit {
 
@@ -9,6 +8,10 @@ public abstract class Enemy extends Unit {
     protected Integer experienceValue;
 
     public EnemyDeathCallback enemyDeathCB;
+
+    public void setEnemyDeathCB(EnemyDeathCallback enemyDeathCB) {
+        this.enemyDeathCB = enemyDeathCB;
+    }
 
     //constructor:
     public Enemy(char tile, String name, Integer healthCapacity, Integer attackPoints, Integer defensePoints, Integer experienceValue) {
