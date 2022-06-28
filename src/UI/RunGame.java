@@ -35,7 +35,7 @@ public class RunGame {
             gameFlow = new GameFlow(levelsList[0], player, msc);
             for (Level level :
                     levelsList) {
-                gameFlow.setLevel(level);
+                gameFlow.setGameLevel(level);
                 while (!gameFlow.getGameOver() & !gameFlow.getLevelIsDone()) {
                     gameFlow.printBoard();
                     String userChoice = scanner.next();
