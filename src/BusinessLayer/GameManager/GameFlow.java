@@ -10,6 +10,15 @@ public class GameFlow {
     private Player player;
     private List<Enemy> flowEnemyList;
     private MessageCallback messageCB;
+
+    public boolean isLevelIsDone() {
+        return levelIsDone;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
     private boolean levelIsDone;
     private boolean gameOver;
 
@@ -32,7 +41,8 @@ public class GameFlow {
         this.flowEnemyList = newLevel.getLevelEnemyList();
         this.levelIsDone = false;
         for (Enemy enemy: flowEnemyList) {
-            enemy.setEnemyDeathCB((enemy1) -> this.enemyIsDead(enemy));
+            EnemyDeathCallback enemyDeathCallback = e -> this.enemyIsDead(enemy);
+            enemy.setEnemyDeathCB(enemyDeathCallback);
         }
     }
 
@@ -41,14 +51,12 @@ public class GameFlow {
         player.processStep();
         if (flowEnemyList.size() == 0) {
             levelIsDone = true;
-            System.out.print("to move level or end game");
         }
         for (Enemy e : flowEnemyList) {
             Position pos = e.enemyTurn(player);
             e.interact(level.getBoard().getTile(pos));
             if (!player.isAlive()){
                 gameOver = true;
-                System.out.print("to end game somehow");
             }
         }
     }

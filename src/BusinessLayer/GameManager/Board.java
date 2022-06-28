@@ -2,6 +2,7 @@ package BusinessLayer.GameManager;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import BusinessLayer.Tiles.*;
 
 public class Board {
 

@@ -1,7 +1,7 @@
 package UI;
 
-import Tiles.*;
-import GameManager.*;
+import BusinessLayer.Tiles.*;
+import BusinessLayer.GameManager.*;
 
 import java.io.File;
 import java.io.IOException;

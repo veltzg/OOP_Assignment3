@@ -6,6 +6,8 @@ import BusinessLayer.GameManager.MessageCallback;
 import BusinessLayer.GameManager.TileFactory;
 import BusinessLayer.Tiles.*;
 
+import javax.imageio.IIOException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,7 +26,7 @@ public class RunGame {
         this.fp = fp;
     }
 
-    public void runGame() {
+    public void runGame() throws IOException {
         Scanner scanner = new Scanner(System.in);
         tiles.printPlayers(msc);
         Player player = choosePlayer(scanner);
@@ -32,16 +34,16 @@ public class RunGame {
         msc.send(player.getName());
         levelsList = fp.produceLevels(tiles);
         if (!levelsList.isEmpty()) {
-            gameFlow = new GameFlow(levelsList[0], player, msc);
+            gameFlow = new GameFlow(levelsList.get(0), player, msc);
             for (Level level :
                     levelsList) {
                 gameFlow.setGameLevel(level);
-                while (!gameFlow.getGameOver() & !gameFlow.getLevelIsDone()) {
+                while (!gameFlow.isGameOver() & !gameFlow.isLevelIsDone()) {
                     gameFlow.printBoard();
                     String userChoice = scanner.next();
                     gameFlow.gameTick(userChoice.charAt(0));
                 }
-                if(gameFlow.getGameOver()){
+                if(gameFlow.isGameOver()){
                     gameFlow.printBoard();
                     player.describe();
                     msc.send("Game Over.");
