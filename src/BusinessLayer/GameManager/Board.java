@@ -54,6 +54,13 @@ public class Board {
     @Override
     public String toString() {
         tiles = tiles.stream().sorted().collect(Collectors.toList());
-        return ("To Implement");
+        String boardToString="";
+        for(Tile t:tiles){
+            if (t.getPosition().x==0){
+                boardToString+="\n";
+            }
+            boardToString+=t.toString();
+        }
+        return boardToString;
     }
 }
