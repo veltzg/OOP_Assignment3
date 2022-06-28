@@ -27,35 +27,36 @@ public class Monster extends Enemy{
     }
 
     public Position randomMove(){
-        int rand = (int)(Math.random() * 5);
-        if (rand == 0)
-            return (this.getPosition());
+        int rand = (int)(Math.floor(Math.random()*5));
         if (rand == 1)
-            return (this.getPosition().moveLeft());
+            return (this.getPosition().stepLeft());
         if (rand == 2)
-            return (this.getPosition().moveRight());
+            return (this.getPosition().stepRight());
         if (rand == 3)
-            return (this.getPosition().moveUp());
+            return (this.getPosition().stepUp());
         if (rand == 4)
-            return (this.getPosition().moveDown());
-        return null;
+            return (this.getPosition().stepDown());
+        else
+            return (this.getPosition());
     }
 
-    public Position chase(Player p){
+    public Position chase(Player p) {
         int dx = this.getPosition().getX() - p.getPosition().getX();
         int dy = this.getPosition().getY() - p.getPosition().getY();
+        Position posToReturn;
         if (Math.abs(dx) > Math.abs(dy)) {
             if (dx > 0)
-                return getPosition().moveLeft();
+                posToReturn = getPosition().stepLeft();
             else
-                return getPosition().moveRight();
+                posToReturn = getPosition().stepRight();
         }
         else {
             if (dy > 0)
-                return getPosition().moveUp();
+                posToReturn = getPosition().stepUp();
             else
-                return getPosition().moveDown();
+                posToReturn = getPosition().stepDown();
         }
+        return posToReturn;
     }
 
     @Override

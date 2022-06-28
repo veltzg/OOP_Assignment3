@@ -37,9 +37,6 @@ public abstract class Unit extends Tile{
     protected int attackPoints;
     protected int defensePoints;
     protected MessageCallback messageCB;
-
-
-
     protected EnemyDeathCallback enemyDeathCB;
 
     //constructors:
@@ -90,7 +87,7 @@ public abstract class Unit extends Tile{
     public void visit(Empty e){
         replacePosition(e);
     }
-
+    public void visit(Wall w){ }
     public abstract void visit(Player p);
     public abstract void visit(Enemy e);
 

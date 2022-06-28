@@ -50,26 +50,29 @@ public class Position {
         }
     }
 
-    public Position moveLeft() {
-        x = getX() - 1;
-        return this;
+    public Position stepLeft() {
+        int newX = getX() - 1;
+        Position toReturn = new Position (newX, getY());
+        return toReturn;
     }
 
-    public Position moveRight() {
-        x = getX() + 1;
-        return this;
+    public Position stepRight() {
+        int newX = getX() + 1;
+        Position toReturn = new Position (newX, getY());
+        return toReturn;
     }
 
-    public Position moveUp() {
-        y = getY() + 1;
-        return this;
+    public Position stepUp() {
+        int newY = getY() + 1;
+        Position toReturn = new Position (getX(), newY);
+        return toReturn;
     }
 
-    public Position moveDown() {
-        y = getY() - 1;
-        return this;
+    public Position stepDown() {
+        int newY = getY() - 1;
+        Position toReturn = new Position (getX(), newY);
+        return toReturn;
     }
-
 
     public  int range(Position U2){
         int range = (int)(Math.sqrt(Math.pow((this.getX() - U2.getX()), 2) + Math.pow((this.getY() - U2.getY()), 2)));
