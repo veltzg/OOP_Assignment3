@@ -1,4 +1,5 @@
 package BusinessLayer.Tiles;
+import BusinessLayer.GameManager.Position;
 
 public class Wall extends Tile{
     private static final char wallCharTile = '#';

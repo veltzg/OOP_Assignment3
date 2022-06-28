@@ -1,5 +1,7 @@
 package BusinessLayer.Tiles;
 
+import BusinessLayer.GameManager.Position;
+
 public class Trap extends Enemy{
 
     //fields:

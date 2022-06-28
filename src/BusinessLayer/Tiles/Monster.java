@@ -1,6 +1,7 @@
 package BusinessLayer.Tiles;
 
 import java.util.*;
+import BusinessLayer.GameManager.Position;
 
 public class Monster extends Enemy{
 
