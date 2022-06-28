@@ -1,7 +1,7 @@
-package Tiles;
+package BusinessLayer.Tiles;
 
-import GameManager.*;
-import java.util.*;
+import BusinessLayer.GameManager.*;
+import BusinessLayer.Tiles.*;
 
 public abstract class Unit extends Tile{
 
@@ -30,16 +30,16 @@ public abstract class Unit extends Tile{
 
     //fields:
     protected String name;
-    protected Health health;
+    public Health health;
     protected int attackPoints;
     protected int defensePoints;
     protected MessageCallback messageCB;
 
     //constructors:
 
-    protected Unit (char tile, String name, int healthCapacity, int attack, int defense)
+    public Unit (char tile, String name, int healthCapacity, int attack, int defense)
    {
-        super (tile);
+        super(tile);
         this.name = name;
         this.health = new Health(healthCapacity,healthCapacity);
         this.attackPoints = attack;
@@ -53,7 +53,7 @@ public abstract class Unit extends Tile{
         this.messageCB = messageCallback;
     }
 
-    protected int attack(){
+    public int attack(){
         int attackRoll = (int)(Math.random()*(getAttackPoints()+1));
         messageCB.send(getName() + " rolled " + attackRoll + " attack points.");
         return attackRoll;

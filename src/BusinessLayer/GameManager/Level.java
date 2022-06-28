@@ -1,7 +1,7 @@
-package GameManager;
+package BusinessLayer.GameManager;
 
-import Tiles.*;
 import java.util.*;
+import BusinessLayer.Tiles.*;
 
 public class Level {
 

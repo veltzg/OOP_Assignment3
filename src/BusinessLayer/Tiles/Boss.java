@@ -1,6 +1,6 @@
-package Tiles;
+package BusinessLayer.Tiles;
 
-import GameManager.Position;
+import BusinessLayer.GameManager.Position;
 
 import java.util.List;
 

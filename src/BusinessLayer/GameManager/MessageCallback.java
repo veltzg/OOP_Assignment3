@@ -1,7 +1,4 @@
-package GameManager;
-
-import Tiles.*;
-import java.util.*;
+package BusinessLayer.GameManager;
 
 public interface MessageCallback {
     public void send(String m);

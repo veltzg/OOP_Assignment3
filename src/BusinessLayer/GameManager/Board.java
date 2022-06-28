@@ -1,6 +1,5 @@
-package GameManager;
+package BusinessLayer.GameManager;
 
-import Tiles.*;
 import java.util.*;
 import java.util.stream.Collectors;
 

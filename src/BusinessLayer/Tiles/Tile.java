@@ -1,9 +1,7 @@
-package Tiles;
+package BusinessLayer.Tiles;
 
-import GameManager.*;
-import java.util.*;
-import java.awt.*;
-import GameManager.Position;
+import BusinessLayer.GameManager.*;
+import BusinessLayer.GameManager.Position;
 
 public abstract class Tile implements Comparable<Tile> {
 

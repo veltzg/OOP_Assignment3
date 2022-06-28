@@ -1,6 +1,6 @@
-package GameManager;
+package BusinessLayer.GameManager;
 
-import Tiles.*;
+import BusinessLayer.Tiles.*;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -71,5 +71,14 @@ public class TileFactory {
     public Wall produceWall(Position position){
         Wall wall = new Wall(position);
         return wall;
+    }
+
+    public void printPlayers(MessageCallback msc){
+        msc.send("Select player: ");
+        int playerIndex = 1;
+        for (Player p : listPlayers()){
+            msc.send(playerIndex +": "+p.describe());
+            playerIndex++;
+        }
     }
 }
