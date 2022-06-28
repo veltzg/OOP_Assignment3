@@ -86,6 +86,10 @@ public class GameFlow {
         }
     }
 
+    public void printBoard() {
+        messageCB.send(level.getBoard().toString());
+        messageCB.send(player.describe());
+    }
 
     public void enemyIsDead(Enemy e) {
         flowEnemyList.remove(e);
