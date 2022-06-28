@@ -21,6 +21,8 @@ public abstract class Player extends Unit implements HeroicUnit {
 
     public void setExperience(Integer experience) {
         this.experience = experience;
+        if(experience >= experience * playerLevel)
+            levelUp();
     }
 
     public void setPlayerLevel(Integer playerLevel) {
@@ -62,10 +64,7 @@ public abstract class Player extends Unit implements HeroicUnit {
     public void visit(Enemy e){
         battle(e);
         if(!e.isAlive()){
-            setExperience(getExperience() + e.getExperienceValue());
-            replacePosition(e);
-            e.onDeath();
-            enemyDeathCB.call(e, this);
+            enemyDeathCB.call(e);
         }
     }
 

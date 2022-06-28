@@ -6,7 +6,7 @@ import java.util.*;
 public class Rogue extends Player {
 
     //fields:
-    protected Integer cost;
+    private Integer cost;
 
     public void setCurrentEnergy(Integer currentEnergy) {
         this.currentEnergy = currentEnergy;
@@ -16,7 +16,7 @@ public class Rogue extends Player {
         return currentEnergy;
     }
 
-    protected Integer currentEnergy;
+    private Integer currentEnergy;
     private final Integer MAX_ENERGY = 100;
     private final Integer ATTACK_EXTRA = 3;
     private final String ABILITY_NAME = "Fan of Knives";

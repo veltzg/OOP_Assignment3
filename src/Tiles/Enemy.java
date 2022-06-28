@@ -55,7 +55,6 @@ public abstract class Enemy extends Unit {
     @Override
     public void onDeath() {
         messageCB.send(getName() + " is dead.");
-        enemyDeathCB.call();
     }// X gained X points?
 
 
