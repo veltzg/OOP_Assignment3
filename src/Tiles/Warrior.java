@@ -7,8 +7,8 @@ public class Warrior extends Player{
 
     //fields:
     private final String ABILITY_NAME = "Avenger's Shield";
-    protected Integer abilityCooldown;
-    protected Integer remainingCooldown;
+    private Integer abilityCooldown;
+    private Integer remainingCooldown;
     private final Integer healing = 10;
     private final Integer castingRange = 3;
 
@@ -53,5 +53,11 @@ public class Warrior extends Player{
         getHealth().setHealthAmount(getHealth().getHealthPool());
         setAttackPoints(getAttackPoints() + 2 * getPlayerLevel());
         setDefensePoints(getDefensePoints() + 1 * getPlayerLevel());
+    }
+
+    @Override
+    public String describe() {
+        String s = super.describe();
+        return String.format("%s\t\tCooldown: %s/%s ", s, remainingCooldown, abilityCooldown);
     }
 }

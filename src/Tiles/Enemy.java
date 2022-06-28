@@ -8,6 +8,7 @@ public abstract class Enemy extends Unit {
     //fields:
     protected Integer experienceValue;
 
+    public EnemyDeathCallback enemyDeathCB;
 
     //constructor:
     public Enemy(char tile, String name, Integer healthCapacity, Integer attackPoints, Integer defensePoints, Integer experienceValue) {
