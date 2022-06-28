@@ -2,7 +2,6 @@ package GameManager;
 
 import Tiles.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class GameFlow {
 
@@ -21,20 +20,34 @@ public class GameFlow {
         this.flowEnemyList = level.getLevelEnemyList();
     }
 
+    public void gameTick(char c) {
+        playerMove(c);
+        player.processStep();
+        if (flowEnemyList.size() == 0) {
+            System.out.print("to move level or end game");
+        }
+        for (Enemy e : flowEnemyList) {
+            Position pos = e.enemyTurn(player);
+            e.interact(level.getBoard().getTile(pos));
+            if (!player.isAlive())
+                System.out.print("to end game somehow");
+        }
+    }
+
     public void playerMove(char c) {
         Position playerPosition = player.getPosition();
         switch (c) {
             case 'w':
-                player.interact(level.getBoard().getTile(playerPosition.moveUp()));
+                player.interact(level.getBoard().getTile(playerPosition.stepUp()));
                 break;
             case 's':
-                player.interact(level.getBoard().getTile(playerPosition.moveDown()));
+                player.interact(level.getBoard().getTile(playerPosition.stepDown()));
                 break;
             case 'd':
-                player.interact(level.getBoard().getTile(playerPosition.moveRight()));
+                player.interact(level.getBoard().getTile(playerPosition.stepRight()));
                 break;
             case 'a':
-                player.interact(level.getBoard().getTile(playerPosition.moveLeft()));
+                player.interact(level.getBoard().getTile(playerPosition.stepLeft()));
                 break;
             case 'e':
                 player.castAbility(flowEnemyList);
@@ -46,19 +59,6 @@ public class GameFlow {
         }
     }
 
-    public void gameTick(char c) {
-        playerMove(c);
-        player.processStep();
-        this.flowEnemyList = level.getLevelEnemyList();
-        if (flowEnemyList.size() == 0) {
-            System.out.print("to move level or end game");
-        }
-        for (Enemy e : flowEnemyList) {
-            e.setPosition(e.gameEnemyTick(player));
-            if (!player.isAlive())
-                System.out.print("to end game somehow");
-        }
-    }
 
     public void enemyIsDead(Enemy e) {
         flowEnemyList.remove(e);
@@ -68,5 +68,6 @@ public class GameFlow {
         level.getBoard().add(empty);
         level.getBoard().remove(e);
         player.replacePosition(empty);
+        messageCB.send(e.getName() + " is dead. "+ player.getName() +" gained "+ e.getExperienceValue() +" Experience");
     }
 }

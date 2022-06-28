@@ -53,13 +53,13 @@ public class Boss extends Enemy implements HeroicUnit{
         if (rand == 0)
             return (this.getPosition());
         if (rand == 1)
-            return (this.getPosition().moveLeft());
+            return (this.getPosition().stepLeft());
         if (rand == 2)
-            return (this.getPosition().moveRight());
+            return (this.getPosition().stepRight());
         if (rand == 3)
-            return (this.getPosition().moveUp());
+            return (this.getPosition().stepUp());
         if (rand == 4)
-            return (this.getPosition().moveDown());
+            return (this.getPosition().stepDown());
         return null;
     }
 
@@ -68,15 +68,15 @@ public class Boss extends Enemy implements HeroicUnit{
         int dy = this.getPosition().getY() - p.getPosition().getY();
         if (Math.abs(dx) > Math.abs(dy)) {
             if (dx > 0)
-                return getPosition().moveLeft();
+                return getPosition().stepLeft();
             else
-                return getPosition().moveRight();
+                return getPosition().stepRight();
         }
         else {
             if (dy > 0)
-                return getPosition().moveUp();
+                return getPosition().stepUp();
             else
-                return getPosition().moveDown();
+                return getPosition().stepDown();
         }
     }
 

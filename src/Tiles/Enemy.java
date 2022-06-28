@@ -35,16 +35,12 @@ public abstract class Enemy extends Unit {
         }
     }
 
-    public Position gameEnemyTick(Player p) {
-        return this.enemyTurn(p);
-    }
-
     public abstract Position enemyTurn(Player p);
 
     @Override
     public void onDeath() {
-
-    } // Make sure to remove from GameBoard
+        enemyDeathCB.call(this);
+    }
 
     public String describe() {
         return String.format("%s\t\tExperience Value: %s", super.describe(), getExperienceValue());

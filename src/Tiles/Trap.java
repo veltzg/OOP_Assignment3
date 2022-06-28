@@ -42,7 +42,7 @@ public class Trap extends Enemy{
             tickCount ++;
         }
         if (this.getPosition().range(p.getPosition()) < 2) {
-            visit(p);
+            return p.getPosition();
         }
         return getPosition();
     }

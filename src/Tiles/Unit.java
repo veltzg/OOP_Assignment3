@@ -87,7 +87,7 @@ public abstract class Unit extends Tile{
     public void visit(Empty e){
         replacePosition(e);
     }
-
+    public void visit(Wall w){ }
     public abstract void visit(Player p);
     public abstract void visit(Enemy e);
 
