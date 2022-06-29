@@ -7,6 +7,15 @@ public class Warrior extends Player{
     //fields:
     private final String ABILITY_NAME = "Avenger's Shield";
     private Integer abilityCooldown;
+
+    public Integer getRemainingCooldown() {
+        return remainingCooldown;
+    }
+
+    public void setRemainingCooldown(Integer remainingCooldown) {
+        this.remainingCooldown = remainingCooldown;
+    }
+
     private Integer remainingCooldown;
     private final Integer healing = 10;
     private final Integer castingRange = 3;

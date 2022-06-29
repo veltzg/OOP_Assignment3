@@ -29,7 +29,12 @@ public class RunGame {
 
     public void runGame() throws IOException {
         Scanner scanner = new Scanner(System.in);
-        tiles.printPlayers(msc);
+        msc.send("Select player: ");
+        int playerIndex = 1;
+        for (Player p : tiles.listPlayers()){
+            msc.send(playerIndex +": "+p.describe());
+            playerIndex++;
+        }
         Player player = choosePlayer(scanner);
         msc.send("You have selected:");
         msc.send(player.getName());
@@ -47,11 +52,11 @@ public class RunGame {
                 if(gameFlow.isGameOver()){
                     gameFlow.printBoard();
                     player.describe();
-                    msc.send("Game Over.");
+                    System.out.println("Game Over.");
                     break;
                 }
             }
-            msc.send("You Won!");
+            System.out.println("You Won!");
         }
     }
 

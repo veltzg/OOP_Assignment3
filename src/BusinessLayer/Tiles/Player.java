@@ -34,7 +34,7 @@ public abstract class Player extends Unit implements HeroicUnit {
     }
 
     //fields:
-    protected Integer experience;
+    public Integer experience;
     protected Integer playerLevel;
 
     //constructor:
