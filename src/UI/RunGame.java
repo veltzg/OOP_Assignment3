@@ -24,6 +24,7 @@ public class RunGame {
     public RunGame(MessageCallback msc, FileParser fp){
         tiles = new TileFactory();
         this.fp = fp;
+        this.msc = msc;
     }
 
     public void runGame() throws IOException {
@@ -32,7 +33,7 @@ public class RunGame {
         Player player = choosePlayer(scanner);
         msc.send("You have selected:");
         msc.send(player.getName());
-        levelsList = fp.produceLevels(tiles);
+        levelsList = fp.produceLevels(tiles, player);
         if (!levelsList.isEmpty()) {
             gameFlow = new GameFlow(levelsList.get(0), player, msc);
             for (Level level :

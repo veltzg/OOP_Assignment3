@@ -3,6 +3,8 @@ package BusinessLayer.Tiles;
 import BusinessLayer.GameManager.*;
 import BusinessLayer.GameManager.Position;
 
+import java.util.Comparator;
+
 public abstract class Tile implements Comparable<Tile> {
 
     //fields:
@@ -35,13 +37,13 @@ public abstract class Tile implements Comparable<Tile> {
     public abstract void accept(Unit unit);
 
     @Override
-    public int compareTo(Tile tile) {
-        return getPosition().compareTo(tile.getPosition());
+    public String toString() {
+        return String.valueOf(tile);
     }
 
     @Override
-    public String toString() {
-        return String.valueOf(tile);
+    public int compareTo ( Tile other) {
+            return (this.position.compareTo(other.getPosition()));
     }
 
     public void replacePosition(Tile other){

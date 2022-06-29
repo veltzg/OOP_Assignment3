@@ -23,22 +23,22 @@ public class FileParser {
 
     //methods:
 
-    public List<Level> produceLevels(TileFactory tileFactory) throws IOException {
+    public List<Level> produceLevels(TileFactory tileFactory, Player player) throws IOException {
         File levelsFolder = new File(this.args);
         File[] levelsList = levelsFolder.getCanonicalFile().listFiles();
         List<Level> gameLevels = new ArrayList<Level>();
         for (File levelFile : levelsList) {
-            gameLevels.add(fileToLevel(levelFile, tileFactory));
+            gameLevels.add(fileToLevel(levelFile, tileFactory, player));
         }
         return gameLevels;
     }
 
-    public Level fileToLevel(File levelFile, TileFactory tileFactory) throws IOException {
+    public Level fileToLevel(File levelFile, TileFactory tileFactory, Player player) throws IOException {
         try{
             List<String> levelBoardToString = Files.readAllLines(levelFile.toPath());
             Board board = new Board();
             Level level = new Level(board);
-            Tile[][] boardTiles = new Tile[levelBoardToString.get(0).length()][levelBoardToString.size()];
+            Tile[][] boardTiles = new Tile[levelBoardToString.size()][levelBoardToString.get(0).length()];
             for (int i = 0; i < boardTiles.length; i++) {
                 String row = levelBoardToString.get(i);
                 for (int j = 0; j < row.length(); j++) {
@@ -47,11 +47,12 @@ public class FileParser {
                     if (c == '#') {
                         boardTiles[i][j] = tileFactory.produceWall(position);
                     }
-                    if (c == '.') {
+                    else if (c == '.') {
                         boardTiles[i][j] = tileFactory.produceEmpty(position);
                     }
-                    if (c == '@') {
+                    else if (c == '@') {
                         level.setStartPosition(position);
+                        boardTiles[i][j] = player;
                     } else {
                         Enemy enemy = tileFactory.produceEnemy(c, position, messageCB);
                         boardTiles[i][j] = enemy;

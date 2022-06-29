@@ -1,4 +1,4 @@
-package Tests;
+/*package Tests;
 
 import org.junit.*;
 
@@ -28,4 +28,4 @@ class WarriorTest {
     @org.junit.jupiter.api.Test
     void describe() {
     }
-}
+}*/

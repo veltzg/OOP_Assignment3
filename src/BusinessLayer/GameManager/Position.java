@@ -1,6 +1,6 @@
 package BusinessLayer.GameManager;
 
-public class Position {
+public class Position implements Comparable<Position>{
 
     public int getX() {
         return x;
@@ -29,7 +29,7 @@ public class Position {
         this.y = y;
     }
 
-
+    @Override
     public int compareTo(Position p) {
         if (p.getX() == getX() && p.getY() == getY())
             return 0;
@@ -75,4 +75,6 @@ public class Position {
         int range = (int)(Math.sqrt(Math.pow((this.getX() - U2.getX()), 2) + Math.pow((this.getY() - U2.getY()), 2)));
         return range;
     }
+
+
 }

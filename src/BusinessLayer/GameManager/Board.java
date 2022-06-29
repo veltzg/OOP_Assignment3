@@ -47,13 +47,13 @@ public class Board {
         tiles.add(t);
     }
 
-    private void arrangeBoard(){
-        tiles.sort(Tile::compareTo);
-    }
+    //private void arrangeBoard(){
+        //tiles.sort(Tile::getPosition);
+   // }
 
     @Override
     public String toString() {
-        tiles = tiles.stream().sorted().collect(Collectors.toList());
+        tiles = tiles.stream().sorted(Comparator.comparing(Tile::getPosition)).collect(Collectors.toList());
         String boardToString="";
         for(Tile t:tiles){
             if (t.getPosition().x==0){
