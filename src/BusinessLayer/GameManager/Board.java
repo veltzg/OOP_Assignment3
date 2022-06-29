@@ -30,17 +30,18 @@ public class Board {
     //returns a tile from a specifiedd locaion on board
     public Tile getTile(Position p) {
         for(Tile tile : tiles){
-            if (tile.getPosition() == p){
+            if (tile.getPosition().compareTo(p) == 0){
                 return tile;
             }
         }
         throw new NoSuchElementException();
     }
 
-    public void remove(Enemy e) {
+    public Tile remove(Enemy e) {
         tiles.remove(e);
         Position p = e.getPosition();
         tiles.add(new Empty(p));
+        return (getTile(p));
     }
 
     public void add(Tile t) {

@@ -7,6 +7,7 @@ public class Warrior extends Player{
     //fields:
     private final String ABILITY_NAME = "Avenger's Shield";
     private Integer abilityCooldown;
+    private boolean abilityCasted = false;
 
     public Integer getRemainingCooldown() {
         return remainingCooldown;
@@ -34,8 +35,9 @@ public class Warrior extends Player{
         if(remainingCooldown > 0)
             messageCB.send(getName() + " tried to cast " + ABILITY_NAME + ", but there is a cooldown: " +  remainingCooldown + ".");
         else {
-            messageCB.send(getName() + " used " + ABILITY_NAME + " healing for " + (healing * getDefensePoints()));
+            messageCB.send(getName() + " used " + ABILITY_NAME + ", healing for " + (healing * getDefensePoints()));
             remainingCooldown = abilityCooldown;
+            abilityCasted = true;
             health.setHealthAmount(Math.min(health.getHealthAmount() + 10 * getDefensePoints(), health.getHealthPool()));
             List<Enemy> enemiesAround = findEnemiesWithingRange(allEnemies, castingRange);
             if(!enemiesAround.isEmpty()) {
@@ -47,8 +49,12 @@ public class Warrior extends Player{
 
     @Override
     public void processStep(){
-        if (remainingCooldown > 0){
-            remainingCooldown -= 1;
+        if(abilityCasted)
+            abilityCasted = false;
+        else{
+            if (remainingCooldown > 0) {
+                remainingCooldown -= 1;
+            }
         }
     }
 

@@ -83,7 +83,7 @@ public abstract class Player extends Unit implements HeroicUnit {
         int result = attackPower - defenseRoll;
         if (result > 0) {
             e.getHealth().setHealthAmount(e.getHealth().getHealthAmount() - result);
-            messageCB.send(getName() + " hit " + e.getName() + " for " + result + "ability damage.");
+            messageCB.send(getName() + " hit " + e.getName() + " for " + result + " ability damage.");
         }
         else
             messageCB.send(getName() + " dealt 0 damage to " + e.getName() + ".");
