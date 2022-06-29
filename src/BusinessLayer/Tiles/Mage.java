@@ -63,6 +63,7 @@ public class Mage extends Player{
     private final Integer SPELL_BONUS = 10;
     private final Integer CURRENT_POOL_TICK_BONUS = 1;
     private final String ABILITY_NAME = "Blizzard";
+    private boolean abilityCasted = false;
 
     //constructor:
     public Mage(String name, Integer healthCapacity, Integer attackPoints, Integer defensePoints, Integer manaPool, Integer manaCost, Integer spellPower, Integer hitsCount, Integer abilityRange) {
@@ -84,11 +85,16 @@ public class Mage extends Player{
         setManaPool(getManaPool() * MANA_BONUS * getPlayerLevel());
         setManaCost(Math.min((int)(getManaPool() * 0.25 + getCurrentPool()), manaPool));
         setSpellPower(getSpellPower() + SPELL_BONUS * getPlayerLevel());
+        if(getExperience() >= EXPERIENCE_BONUS * getPlayerLevel())
+            levelUp();
     }
 
     @Override
     public void processStep(){
-        setCurrentPool(Math.min(manaPool, getCurrentPool() + CURRENT_POOL_TICK_BONUS * getPlayerLevel()));
+        if(abilityCasted)
+            abilityCasted = false;
+        else
+            setCurrentPool(Math.min(manaPool, getCurrentPool() + CURRENT_POOL_TICK_BONUS * getPlayerLevel()));
     }
 
     @Override
@@ -99,12 +105,15 @@ public class Mage extends Player{
             messageCB.send(getName() + " cast " + ABILITY_NAME + ".");
             setCurrentPool(getCurrentPool() - getManaCost());
             int hits = 0;
+            abilityCasted = true;
             List<Enemy> enemiesAround = findEnemiesWithingRange(enemies, abilityRange);
             while (hits < hitsCount && !enemiesAround.isEmpty()){
                 Enemy e = enemiesAround.get((int)(Math.random() * enemiesAround.size()));
                 attackWithAbility(e, getSpellPower());
-                if(!e.isAlive())
+                if(!e.isAlive()) {
                     enemiesAround.remove(e);
+                    e.onDeath();
+                }
                 hits ++;
             }
         }

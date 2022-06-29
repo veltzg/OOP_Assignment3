@@ -43,6 +43,8 @@ public class Warrior extends Player{
             if(!enemiesAround.isEmpty()) {
                 Enemy enemyToCast = enemiesAround.get((int) Math.random() * enemiesAround.size());
                 attackWithAbility(enemyToCast, (int) (0.1 * health.getHealthPool()));
+                if(!enemyToCast.isAlive())
+                    enemyToCast.onDeath();
             }
         }
     }
@@ -67,6 +69,8 @@ public class Warrior extends Player{
         getHealth().setHealthAmount(getHealth().getHealthPool());
         setAttackPoints(getAttackPoints() + 2 * getPlayerLevel());
         setDefensePoints(getDefensePoints() + 1 * getPlayerLevel());
+        if(getExperience() >= EXPERIENCE_BONUS * getPlayerLevel())
+            levelUp();
     }
 
     @Override
