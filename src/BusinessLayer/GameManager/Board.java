@@ -30,11 +30,11 @@ public class Board {
     //returns a tile from a specifiedd locaion on board
     public Tile getTile(Position p) {
         for(Tile tile : tiles){
-            if (tile.getPosition() == p){
+            if (tile.getPosition().compareTo(p) == 0){
                 return tile;
             }
         }
-        throw new NoSuchElementException();
+        throw new NoSuchElementException("I don't find the Tile");
     }
 
     public void remove(Enemy e) {

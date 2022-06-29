@@ -60,13 +60,13 @@ public class Position implements Comparable<Position>{
     }
 
     public Position stepUp() {
-        int newY = getY() + 1;
+        int newY = getY() - 1;
         Position toReturn = new Position (getX(), newY);
         return toReturn;
     }
 
     public Position stepDown() {
-        int newY = getY() - 1;
+        int newY = getY() + 1;
         Position toReturn = new Position (getX(), newY);
         return toReturn;
     }
