@@ -95,9 +95,8 @@ public class GameFlow {
         flowEnemyList.remove(e);
         level.removeEnemy(e);
         player.setExperience(player.getExperience() + e.getExperienceValue());
-        Tile empty = new Empty (e.getPosition());
-        level.getBoard().remove(e);
-        player.replacePosition(empty);
+        Tile newEmpty = level.getBoard().remove(e);
+        player.replacePosition(newEmpty);
         messageCB.send(e.getName() + " is dead. "+ player.getName() +" gained "+ e.getExperienceValue() +" Experience");
     }
 

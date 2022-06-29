@@ -27,7 +27,6 @@ public class Board {
         throw new NoSuchElementException();
     }
 
-    //returns a tile from a specifiedd locaion on board
     public Tile getTile(Position p) {
         for(Tile tile : tiles){
             if (tile.getPosition().compareTo(p) == 0){
@@ -37,19 +36,16 @@ public class Board {
         throw new NoSuchElementException("I don't find the Tile");
     }
 
-    public void remove(Enemy e) {
+    public Tile remove(Enemy e) {
         tiles.remove(e);
         Position p = e.getPosition();
         tiles.add(new Empty(p));
+        return (getTile(p));
     }
 
     public void add(Tile t) {
         tiles.add(t);
     }
-
-    //private void arrangeBoard(){
-        //tiles.sort(Tile::getPosition);
-   // }
 
     @Override
     public String toString() {
@@ -57,9 +53,9 @@ public class Board {
         String boardToString="";
         for(Tile t:tiles){
             if (t.getPosition().x==0){
-                boardToString+="\n";
+                boardToString = boardToString + "\n";
             }
-            boardToString+=t.toString();
+            boardToString = boardToString + t.toString();
         }
         return boardToString;
     }
