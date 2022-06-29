@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-06-29T11:14:44.810Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="nTsJiT0okWwuR6qo6jnq" version="20.0.3" type="github">
+<mxfile host="app.diagrams.net" modified="2022-06-29T11:16:40.048Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36" etag="-SY-iRRNreWS172ab1gn" version="20.0.3" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="613" dy="417" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -251,6 +251,20 @@
         </mxCell>
         <mxCell id="DF8nXH2U8TMIkkzXMWSP-7" value="+ setGameLevel&lt;span style=&quot;background-color: initial;&quot;&gt;(newLevel: Level): void&lt;/span&gt;&lt;br&gt;&lt;br&gt;+ gameTick(char c): void&lt;br&gt;&lt;br&gt;+ playerMove(char c): void&lt;br&gt;&lt;br&gt;+ printBoard(): void&lt;br&gt;&lt;br&gt;+ enemyIsDead(Enemy e): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="DF8nXH2U8TMIkkzXMWSP-4">
           <mxGeometry y="126" width="192" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="DF8nXH2U8TMIkkzXMWSP-8" value="Level" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="489" y="2100" width="192" height="140" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DF8nXH2U8TMIkkzXMWSP-9" value="- board: Board&#xa;- levelEnemyList: List&lt;Enemy&gt;&#xa;- startPosition: Position" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="DF8nXH2U8TMIkkzXMWSP-8">
+          <mxGeometry y="26" width="192" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="DF8nXH2U8TMIkkzXMWSP-10" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="DF8nXH2U8TMIkkzXMWSP-8">
+          <mxGeometry y="74" width="192" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="DF8nXH2U8TMIkkzXMWSP-11" value="+ addEnemy(Enemy e): void&lt;br&gt;&lt;br&gt;+ removeEnemy(Enemy e): void" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="DF8nXH2U8TMIkkzXMWSP-8">
+          <mxGeometry y="82" width="192" height="58" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
