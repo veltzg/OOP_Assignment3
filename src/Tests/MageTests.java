@@ -2,6 +2,7 @@ package Tests;
 
 import BusinessLayer.GameManager.MessageCallback;
 import BusinessLayer.GameManager.Position;
+import BusinessLayer.Tiles.Mage;
 import BusinessLayer.Tiles.Warrior;
 import org.junit.*;
 import org.junit.Before;
@@ -10,18 +11,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.Test;
 
-public class WarriorTest {
-
-    Warrior w1;
-    Warrior w2;
+public class MageTests {
+    Mage m1;
+    Mage m2;
 
     @BeforeEach
     void setUp() {
         MessageCallback messageCallback= msg->System.out.println(msg);
-        Warrior w1 =  new Warrior("Jon Snow", 300, 30, 4, 3);
-        w1.initialize(new Position(3,4), messageCallback);
-        Warrior w2 = new Warrior("The Hound", 400, 20, 6, 5);
-        w2.initialize(new Position(6,10), messageCallback);
+        m1 =  new Mage("Melisandre", 100, 5, 1, 300, 30, 15, 5,6);
+        m1.initialize(new Position(3,4), messageCallback);
+        m2 =  new Mage("Thores of Myr", 250,25,4,150,20,20,3,4);
+        m2.initialize(new Position(6,10), messageCallback);
     }
 
     @After
@@ -34,10 +34,10 @@ public class WarriorTest {
 
     @Test
     void processStep() {
-        w2.processStep();
+        m2.processStep();
         Assert.assertEquals("process step should change remaining cooldown to 0",0,w2.getRemainingCooldown(),0);
-        w2.setRemainingCooldown(3);
-        w2.processStep();
+        m2.setRemainingCooldown(3);
+        m2.processStep();
         Assert.assertEquals("process step should change remaining cooldown to 2",2,w2.getRemainingCooldown(),0);
     }
 
@@ -52,4 +52,5 @@ public class WarriorTest {
         Assert.assertEquals("leveling up should change defense to 42",8,w1.getDefensePoints(),0);
         Assert.assertEquals("leveling up should change cooldown to 0",0,w1.getRemainingCooldown(),0);
     }
+
 }
