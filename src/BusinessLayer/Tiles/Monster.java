@@ -30,11 +30,11 @@ public class Monster extends Enemy{
         int rand = (int)(Math.floor(Math.random()*5));
         if (rand == 1)
             return (this.getPosition().stepLeft());
-        if (rand == 2)
+        else if (rand == 2)
             return (this.getPosition().stepRight());
-        if (rand == 3)
+        else if (rand == 3)
             return (this.getPosition().stepUp());
-        if (rand == 4)
+        else if (rand == 4)
             return (this.getPosition().stepDown());
         else
             return (this.getPosition());

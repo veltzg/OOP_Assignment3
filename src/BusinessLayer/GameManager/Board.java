@@ -27,14 +27,13 @@ public class Board {
         throw new NoSuchElementException();
     }
 
-    //returns a tile from a specifiedd locaion on board
     public Tile getTile(Position p) {
         for(Tile tile : tiles){
             if (tile.getPosition().compareTo(p) == 0){
                 return tile;
             }
         }
-        throw new NoSuchElementException();
+        throw new NoSuchElementException("I don't find the Tile");
     }
 
     public Tile remove(Enemy e) {
@@ -48,19 +47,15 @@ public class Board {
         tiles.add(t);
     }
 
-    //private void arrangeBoard(){
-        //tiles.sort(Tile::getPosition);
-   // }
-
     @Override
     public String toString() {
         tiles = tiles.stream().sorted(Comparator.comparing(Tile::getPosition)).collect(Collectors.toList());
         String boardToString="";
         for(Tile t:tiles){
             if (t.getPosition().x==0){
-                boardToString+="\n";
+                boardToString = boardToString + "\n";
             }
-            boardToString+=t.toString();
+            boardToString = boardToString + t.toString();
         }
         return boardToString;
     }

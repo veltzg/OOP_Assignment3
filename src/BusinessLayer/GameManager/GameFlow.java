@@ -98,6 +98,7 @@ public class GameFlow {
         player.setExperience(player.getExperience() + e.getExperienceValue());
         Tile newEmpty = level.getBoard().remove(e);
         player.replacePosition(newEmpty);
+        messageCB.send(e.getName() + " is dead. "+ player.getName() +" gained "+ e.getExperienceValue() +" Experience");
     }
 
 
