@@ -37,7 +37,7 @@ public class Rogue extends Player {
             messageCB.send((getName() + "  tried to cast " + ABILITY_NAME + ", but there was not enough energy: " + currentEnergy + "/" + MAX_ENERGY + "."));
         else{
             messageCB.send(getName() + " cast " + ABILITY_NAME + ".");
-            setCurrentEnergy(100);
+            setCurrentEnergy(currentEnergy - cost);
             abilityCasted = true;
             List<Enemy> enemiesAround = findEnemiesWithingRange(enemies, ABILITY_RANGE);
             for (Enemy e:

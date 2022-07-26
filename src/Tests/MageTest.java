@@ -1,5 +1,6 @@
 package Tests;
 
+import BusinessLayer.GameManager.EnemyDeathCallback;
 import BusinessLayer.Tiles.Enemy;
 import BusinessLayer.Tiles.Monster;
 import BusinessLayer.Tiles.Trap;
@@ -23,6 +24,7 @@ class MageTest {
     @BeforeEach
     void setUp() {
         MessageCallback messageCallback= msg->System.out.println(msg);
+        EnemyDeathCallback enemyDeathCallback = e -> e = e;
         m1 =  new Mage("Melisandre", 100, 5, 1, 300, 30, 15, 5,6);
         m1.initialize(new Position(3,4), messageCallback);
         m2 =  new Mage("Thores of Myr", 250,25,4,150,20,20,3,4);
@@ -30,15 +32,19 @@ class MageTest {
         enemies = new ArrayList<Enemy>();
         Monster e1 = new Monster('s', "Lannister Solider", 80, 8, 3,25, 3);
         e1.initialize(new Position(8,10), messageCallback);
+        e1.setEnemyDeathCB(enemyDeathCallback);
         enemies.add(e1);
         Trap e2 = new Trap('B', "Bonus Trap", 1, 1, 1, 250,  1, 10);
         e2.initialize(new Position(6,8), messageCallback);
+        e2.setEnemyDeathCB(enemyDeathCallback);
         enemies.add(e2);
         Monster e3 = new Monster('s', "Lannister Solider", 80, 8, 3,25, 3);
         e3.initialize(new Position(8,10), messageCallback);
+        e3.setEnemyDeathCB(enemyDeathCallback);
         enemies.add(e3);
         Trap e4 = new Trap('B', "Bonus Trap", 1, 1, 1, 250,  1, 10);
         e4.initialize(new Position(6,15), messageCallback);
+        e4.setEnemyDeathCB(enemyDeathCallback);
         enemies.add(e4);
     }
 
@@ -85,4 +91,12 @@ class MageTest {
         Assert.assertTrue("cast ability should decrease or not change enemy's health", enemies.get(0).getHealth().getHealthAmount() < health1 || enemies.get(1).getHealth().getHealthAmount() < health2 ||enemies.get(2).getHealth().getHealthAmount() < health3);
     }
 
+    @Test
+    public void findEnemiesWithingRange() {
+        setUp();
+        List<Enemy> enemies1 = m2.findEnemiesWithingRange(enemies, 6);
+        Assert.assertTrue("e1,e2,e3 is in m2 range", enemies.contains(enemies1.get(0)) && enemies.contains(enemies1.get(1)) && enemies.contains(enemies1.get(2)));
+        enemies1 = m1.findEnemiesWithingRange(enemies, 4);
+        Assert.assertEquals("no enemy is in range 3 from m1", 0, enemies1.size());
+    }
 }
