@@ -39,11 +39,9 @@ public class UnitTest {
         int monExp = m1.getExperienceValue();
         int warExp = w1.getExperience();
         Position monPos = m1.getPosition();
-        while (m1.isAlive()){
+        while (m1.getHealth().getHealthAmount() > 0 ){
             w1.battle(m1);
         }
-        Assert.assertEquals("When enemy is dead, player should gain its' experience value", (int)(monExp + warExp), (int)w1.getExperience());
-        Assert.assertEquals("When enemy is dead, player should take its' position", monPos, w1.getPosition());
+        Assert.assertEquals("When enemy is dead, 'isAlive' field turns False", false, m1.isAlive());
     }
-
 }
