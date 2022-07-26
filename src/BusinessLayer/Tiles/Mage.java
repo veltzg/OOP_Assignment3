@@ -82,8 +82,8 @@ public class Mage extends Player{
     public void levelUp(){
         super.levelUp();
         messageCB.send(getName() + " reached level " + getPlayerLevel() +": +" + (getPlayerLevel() * HEALTH_BONUS) + " Health, +" + (ATTACK_BONUS * getPlayerLevel()) + " Attack, +" + (DEFENSE_BONUS* getPlayerLevel()) + " Defense, +" + (MANA_BONUS * getPlayerLevel()) + " maximum Mana, +" + (SPELL_BONUS * getPlayerLevel() + " spell power"));
-        setManaPool(getManaPool() * MANA_BONUS * getPlayerLevel());
-        setManaCost(Math.min((int)(getManaPool() * 0.25 + getCurrentPool()), manaPool));
+        setManaPool(getManaPool() + MANA_BONUS * getPlayerLevel());
+        setCurrentPool(Math.min((int)(getManaPool() * 0.25 + getCurrentPool()), manaPool));
         setSpellPower(getSpellPower() + SPELL_BONUS * getPlayerLevel());
         if(getExperience() >= EXPERIENCE_BONUS * getPlayerLevel())
             levelUp();
