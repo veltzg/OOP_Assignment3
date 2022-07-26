@@ -92,6 +92,7 @@ public class GameFlow {
     }
 
     public void enemyIsDead(Enemy e) {
+        messageCB.send(e.getName() + " is dead. "+ player.getName() +" gained "+ e.getExperienceValue() +" Experience");
         flowEnemyList.remove(e);
         level.removeEnemy(e);
         player.setExperience(player.getExperience() + e.getExperienceValue());

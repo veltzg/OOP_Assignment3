@@ -17,7 +17,6 @@ public abstract class Tile implements Comparable<Tile> {
     }
 
     //methods:
-
     protected void initialize(Position position){
         setPosition(position);
     }

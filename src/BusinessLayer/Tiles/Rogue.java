@@ -20,6 +20,7 @@ public class Rogue extends Player {
     private final Integer ATTACK_EXTRA = 3;
     private final String ABILITY_NAME = "Fan of Knives";
     private final Integer ABILITY_RANGE = 2;
+    private boolean abilityCasted = false;
 
 
     //constructor:
@@ -36,10 +37,14 @@ public class Rogue extends Player {
             messageCB.send((getName() + "  tried to cast " + ABILITY_NAME + ", but there was not enough energy: " + currentEnergy + "/" + MAX_ENERGY + "."));
         else{
             messageCB.send(getName() + " cast " + ABILITY_NAME + ".");
+            setCurrentEnergy(100);
+            abilityCasted = true;
             List<Enemy> enemiesAround = findEnemiesWithingRange(enemies, ABILITY_RANGE);
             for (Enemy e:
                  enemiesAround) {
                 attackWithAbility(e, getAttackPoints());
+                if(!e.isAlive())
+                    e.onDeath();
             }
         }
     }
@@ -50,11 +55,16 @@ public class Rogue extends Player {
         messageCB.send(getName() + " reached level " + getPlayerLevel() +": +" + (getPlayerLevel() * HEALTH_BONUS) + " Health, +" + ((ATTACK_BONUS + ATTACK_EXTRA) * getPlayerLevel()) + " Attack, +" + (DEFENSE_BONUS* getPlayerLevel()) + " Defense");
         setCurrentEnergy(MAX_ENERGY);
         setAttackPoints(getAttackPoints() + ATTACK_EXTRA * getPlayerLevel());
+        if(getExperience() >= EXPERIENCE_BONUS * getPlayerLevel())
+            levelUp();
     }
 
     @Override
     public void processStep() {
-        setCurrentEnergy(Math.min(currentEnergy + 10, MAX_ENERGY));
+        if(abilityCasted)
+            abilityCasted = false;
+        else
+            setCurrentEnergy(Math.min(currentEnergy + 10, MAX_ENERGY));
     }
 
     @Override

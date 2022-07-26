@@ -97,7 +97,9 @@ public abstract class Unit extends Tile{
             u.getHealth().setHealthAmount(u.getHealth().getHealthAmount() - result);
             messageCB.send(getName() + " dealt " + result + " damage to " + u.getName() + ".");
         }
-        messageCB.send(getName() + " dealt 0 damage to " + u.getName() + ".");
+        else {
+            messageCB.send(getName() + " dealt 0 damage to " + u.getName() + ".");
+        }
     }
 
 
