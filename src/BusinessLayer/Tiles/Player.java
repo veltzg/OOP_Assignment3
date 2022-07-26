@@ -21,6 +21,10 @@ public abstract class Player extends Unit implements HeroicUnit {
 
     public void setExperience(Integer experience) {
         this.experience = experience;
+
+
+
+
         if(experience >= experience * playerLevel)
             levelUp();
     }
