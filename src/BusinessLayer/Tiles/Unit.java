@@ -88,7 +88,7 @@ public abstract class Unit extends Tile{
     public abstract void visit(Enemy e);
 
     // Combat against another unit.
-    public void battle(Unit u){
+    protected void battle(Unit u){
         messageCB.send(getName() + " engaged in combat with " + u.getName() + ".");
         messageCB.send(describe());
         messageCB.send(u.describe());
@@ -97,8 +97,9 @@ public abstract class Unit extends Tile{
             u.getHealth().setHealthAmount(u.getHealth().getHealthAmount() - result);
             messageCB.send(getName() + " dealt " + result + " damage to " + u.getName() + ".");
         }
-        else
+        else {
             messageCB.send(getName() + " dealt 0 damage to " + u.getName() + ".");
+        }
     }
 
 

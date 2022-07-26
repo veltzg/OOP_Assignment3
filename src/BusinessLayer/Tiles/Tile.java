@@ -17,8 +17,7 @@ public abstract class Tile implements Comparable<Tile> {
     }
 
     //methods:
-
-    public void initialize(Position position){
+    protected void initialize(Position position){
         setPosition(position);
     }
 
@@ -42,7 +41,7 @@ public abstract class Tile implements Comparable<Tile> {
     }
 
     @Override
-    public int compareTo (Tile other) {
+    public int compareTo ( Tile other) {
             return (this.position.compareTo(other.getPosition()));
     }
 
