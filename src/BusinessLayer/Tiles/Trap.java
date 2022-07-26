@@ -23,6 +23,10 @@ public class Trap extends Enemy{
 
     //methods:
 
+    public boolean isVisible(){
+        return visible;
+    }
+
     public void setTile(){
         if (visible)
             this.tile = visTrapChar;
@@ -51,8 +55,4 @@ public class Trap extends Enemy{
     public void processStep() {
 
     }
-
-
-
-
 }
