@@ -38,6 +38,7 @@ public class RunGame {
             gameFlow = new GameFlow(levelsList.get(0), player, msc);
             for (Level level :
                     levelsList) {
+                player.setPosition(level.getStartPosition());
                 gameFlow.setGameLevel(level);
                 while (!gameFlow.isGameOver() & !gameFlow.isLevelIsDone()) {
                     gameFlow.printBoard();

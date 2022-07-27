@@ -55,7 +55,7 @@ public abstract class Player extends Unit implements HeroicUnit {
         defensePoints = defensePoints + DEFENSE_BONUS * playerLevel;
     }
 
-    public abstract void castAbility(List<Enemy> enemies);
+    public abstract void castAbility(List<Unit> enemies);
     public abstract void processStep();
     public  void onDeath(){
         setTile('X');
@@ -68,9 +68,9 @@ public abstract class Player extends Unit implements HeroicUnit {
         }
     }
 
-    public List<Enemy> findEnemiesWithingRange(List<Enemy> enemies, int range) {
-        List<Enemy> result = new ArrayList<>();
-        for (Enemy e:
+    public List<Unit> findEnemiesWithingRange(List<Unit> enemies, int range) {
+        List<Unit> result = new ArrayList<>();
+        for (Unit e:
              enemies) {
             if(getPosition().range(e.getPosition()) < range)
                 result.add(e);

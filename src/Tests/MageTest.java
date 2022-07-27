@@ -4,6 +4,7 @@ import BusinessLayer.GameManager.EnemyDeathCallback;
 import BusinessLayer.Tiles.Enemy;
 import BusinessLayer.Tiles.Monster;
 import BusinessLayer.Tiles.Trap;
+import BusinessLayer.Tiles.Unit;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ class MageTest {
 
     Mage m1;
     Mage m2;
-    List<Enemy> enemies;
+    List<Unit> enemies;
 
     @BeforeEach
     void setUp() {
@@ -29,7 +30,7 @@ class MageTest {
         m1.initialize(new Position(3,4), messageCallback);
         m2 =  new Mage("Thores of Myr", 250,25,4,150,20,20,3,4);
         m2.initialize(new Position(6,10), messageCallback);
-        enemies = new ArrayList<Enemy>();
+        enemies = new ArrayList<Unit>();
         Monster e1 = new Monster('s', "Lannister Solider", 80, 8, 3,25, 3);
         e1.initialize(new Position(8,10), messageCallback);
         e1.setEnemyDeathCB(enemyDeathCallback);
@@ -94,7 +95,7 @@ class MageTest {
     @Test
     public void findEnemiesWithingRange() {
         setUp();
-        List<Enemy> enemies1 = m2.findEnemiesWithingRange(enemies, 6);
+        List<Unit> enemies1 = m2.findEnemiesWithingRange(enemies, 6);
         Assert.assertTrue("e1,e2,e3 is in m2 range", enemies.contains(enemies1.get(0)) && enemies.contains(enemies1.get(1)) && enemies.contains(enemies1.get(2)));
         enemies1 = m1.findEnemiesWithingRange(enemies, 4);
         Assert.assertEquals("no enemy is in range 3 from m1", 0, enemies1.size());

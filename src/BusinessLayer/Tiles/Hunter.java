@@ -10,7 +10,7 @@ public class Hunter extends Player{
     }
 
     @Override
-    public void castAbility(List<Enemy> enemies) {
+    public void castAbility(List<Unit> enemies) {
 
     }
 

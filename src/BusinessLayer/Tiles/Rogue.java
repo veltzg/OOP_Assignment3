@@ -32,17 +32,17 @@ public class Rogue extends Player {
 
     //methods:
     @Override
-    public void castAbility(List<Enemy> enemies) {
+    public void castAbility(List<Unit> enemies) {
         if(currentEnergy < cost)
             messageCB.send((getName() + "  tried to cast " + ABILITY_NAME + ", but there was not enough energy: " + currentEnergy + "/" + MAX_ENERGY + "."));
         else{
             messageCB.send(getName() + " cast " + ABILITY_NAME + ".");
             setCurrentEnergy(currentEnergy - cost);
             abilityCasted = true;
-            List<Enemy> enemiesAround = findEnemiesWithingRange(enemies, ABILITY_RANGE);
-            for (Enemy e:
+            List<Unit> enemiesAround = findEnemiesWithingRange(enemies, ABILITY_RANGE);
+            for (Unit e:
                  enemiesAround) {
-                attackWithAbility(e, getAttackPoints());
+                attackWithAbility((Enemy)e, getAttackPoints());
                 if(!e.isAlive())
                     e.onDeath();
             }

@@ -98,7 +98,7 @@ public class Mage extends Player{
     }
 
     @Override
-    public void castAbility(List<Enemy> enemies) {
+    public void castAbility(List<Unit> enemies) {
         if(getCurrentPool() < getManaCost())
             messageCB.send((getName() + "  tried to cast " + ABILITY_NAME + ", but there was not enough mana: " + currentPool + "/" + manaCost + "."));
         else {
@@ -106,9 +106,9 @@ public class Mage extends Player{
             setCurrentPool(getCurrentPool() - getManaCost());
             int hits = 0;
             abilityCasted = true;
-            List<Enemy> enemiesAround = findEnemiesWithingRange(enemies, abilityRange);
+            List<Unit> enemiesAround = findEnemiesWithingRange(enemies, abilityRange);
             while (hits < hitsCount && !enemiesAround.isEmpty()){
-                Enemy e = enemiesAround.get((int)(Math.random() * enemiesAround.size()));
+                Enemy e = (Enemy)enemiesAround.get((int)(Math.random() * enemiesAround.size()));
                 attackWithAbility(e, getSpellPower());
                 if(!e.isAlive()) {
                     enemiesAround.remove(e);
