@@ -8,7 +8,7 @@ public class GameFlow {
     //fields:
     private Level level;
     private Player player;
-    private List<Enemy> flowEnemyList;
+    private List<Unit> flowEnemyList;
     private MessageCallback messageCB;
 
     public boolean isLevelIsDone() {
@@ -40,9 +40,9 @@ public class GameFlow {
         this.player.initialize(newLevel.getStartPosition(), messageCB);
         this.flowEnemyList = newLevel.getLevelEnemyList();
         this.levelIsDone = false;
-        for (Enemy enemy: flowEnemyList) {
-            EnemyDeathCallback enemyDeathCallback = e -> this.enemyIsDead(enemy);
-            enemy.setEnemyDeathCB(enemyDeathCallback);
+        for (Unit enemy: flowEnemyList) {
+            EnemyDeathCallback enemyDeathCallback = e -> this.enemyIsDead((Enemy)enemy);
+            ((Enemy)enemy).setEnemyDeathCB(enemyDeathCallback);
         }
     }
 
@@ -52,8 +52,8 @@ public class GameFlow {
         if (flowEnemyList.size() == 0) {
             levelIsDone = true;
         }
-        for (Enemy e : flowEnemyList) {
-            Position pos = e.enemyTurn(player);
+        for (Unit e : flowEnemyList) {
+            Position pos = ((Enemy)e).enemyTurn(player);
             e.interact(level.getBoard().getTile(pos));
             if (!player.isAlive()){
                 gameOver = true;
@@ -92,7 +92,6 @@ public class GameFlow {
     }
 
     public void enemyIsDead(Enemy e) {
-        messageCB.send(e.getName() + " is dead. "+ player.getName() +" gained "+ e.getExperienceValue() +" Experience");
         flowEnemyList.remove(e);
         level.removeEnemy(e);
         player.setExperience(player.getExperience() + e.getExperienceValue());

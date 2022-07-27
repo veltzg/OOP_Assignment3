@@ -7,7 +7,7 @@ public class Level {
 
     //fields:
     private Board board;
-    private List<Enemy> levelEnemyList;
+    private List<Unit> levelEnemyList;
     private Position startPosition;
 
     //constructor:
@@ -40,7 +40,7 @@ public class Level {
 
     public void removeEnemy(Enemy e) { levelEnemyList.remove(e);}
 
-    public List<Enemy> getLevelEnemyList() {
+    public List<Unit> getLevelEnemyList() {
         return levelEnemyList;
     }
 }

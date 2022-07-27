@@ -17,7 +17,7 @@ class RogueTest {
 
     Rogue r1;
     Rogue r2;
-    List<Enemy> enemies;
+    List<Unit> enemies;
 
     @BeforeEach
     void setUp() {
@@ -27,7 +27,7 @@ class RogueTest {
         r1.initialize(new Position(3,4), messageCallback);
         r2 = new Rogue("Bronn", 250, 35, 3, 50);
         r2.initialize(new Position(6,10), messageCallback);
-        enemies = new ArrayList<Enemy>();
+        enemies = new ArrayList<Unit>();
         Monster e1 = new Monster('s', "Lannister Solider", 80, 8, 3,25, 3);
         e1.initialize(new Position(7,10), messageCallback);
         e1.setEnemyDeathCB(enemyDeathCallback);
@@ -83,7 +83,7 @@ class RogueTest {
     @Test
     public void findEnemiesWithingRange() {
         setUp();
-        List<Enemy> enemies1 = r2.findEnemiesWithingRange(enemies, 2);
+        List<Unit> enemies1 = r2.findEnemiesWithingRange(enemies, 2);
         Assert.assertTrue("e1,e2 is in range 2 from r2", enemies.contains(enemies1.get(0)) && enemies.contains(enemies1.get(1)));
         enemies1 = r1.findEnemiesWithingRange(enemies, 2);
         Assert.assertEquals("no enemy is in range 2 from r1", 0, enemies1.size());

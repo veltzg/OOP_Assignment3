@@ -6,6 +6,7 @@ import BusinessLayer.Tiles.Enemy;
 import BusinessLayer.Tiles.Monster;
 import BusinessLayer.Tiles.Trap;
 import BusinessLayer.Tiles.Warrior;
+import BusinessLayer.Tiles.Unit;
 import org.junit.*;
 import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
@@ -20,7 +21,7 @@ public class WarriorTest {
 
     Warrior w1;
     Warrior w2;
-    List<Enemy> enemies;
+    List<Unit> enemies;
 
     @BeforeEach
     public void setUp() {
@@ -29,7 +30,7 @@ public class WarriorTest {
         w1.initialize(new Position(3,4), messageCallback);
         w2 = new Warrior("The Hound", 400, 20, 6, 5);
         w2.initialize(new Position(6,10), messageCallback);
-        enemies = new ArrayList<Enemy>();
+        enemies = new ArrayList<Unit>();
         Monster e1 = new Monster('s', "Lannister Solider", 80, 8, 3,25, 3);
         e1.initialize(new Position(4,4), messageCallback);
         enemies.add(e1);
@@ -79,7 +80,7 @@ public class WarriorTest {
     @Test
     public void findEnemiesWithingRange() {
         setUp();
-        List<Enemy> enemies1 = w1.findEnemiesWithingRange(enemies, 3);
+        List<Unit> enemies1 = w1.findEnemiesWithingRange(enemies, 3);
         Assert.assertTrue("e1 is in w1 range", enemies1.get(0) == enemies.get(0));
         enemies1 = w2.findEnemiesWithingRange(enemies, 3);
         Assert.assertEquals("no enemy is in w2 range", 0, enemies1.size());

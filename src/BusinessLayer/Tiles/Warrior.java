@@ -31,7 +31,7 @@ public class Warrior extends Player{
     //methods:
 
     @Override
-    public void castAbility(List<Enemy> allEnemies){
+    public void castAbility(List<Unit> allEnemies){
         if(remainingCooldown > 0)
             messageCB.send(getName() + " tried to cast " + ABILITY_NAME + ", but there is a cooldown: " +  remainingCooldown + ".");
         else {
@@ -39,9 +39,9 @@ public class Warrior extends Player{
             remainingCooldown = abilityCooldown;
             abilityCasted = true;
             health.setHealthAmount(Math.min(health.getHealthAmount() + 10 * getDefensePoints(), health.getHealthPool()));
-            List<Enemy> enemiesAround = findEnemiesWithingRange(allEnemies, castingRange);
+            List<Unit> enemiesAround = findEnemiesWithingRange(allEnemies, castingRange);
             if(!enemiesAround.isEmpty()) {
-                Enemy enemyToCast = enemiesAround.get((int) Math.random() * enemiesAround.size());
+                Enemy enemyToCast = (Enemy)enemiesAround.get((int) Math.random() * enemiesAround.size());
                 attackWithAbility(enemyToCast, (int) (0.1 * health.getHealthPool()));
                 if(!enemyToCast.isAlive())
                     enemyToCast.onDeath();

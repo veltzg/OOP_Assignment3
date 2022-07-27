@@ -2,16 +2,17 @@ package BusinessLayer.Tiles;
 
 import BusinessLayer.GameManager.Position;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Boss extends Enemy implements HeroicUnit{
-
 
 
     //fields:
     protected Integer visionRange;
     protected Integer abilityFrequency;
     protected Integer combatTicks;
+    private final String ABILITY_NAME = "Shoot";
 
     //constructor:
 
@@ -66,18 +67,20 @@ public class Boss extends Enemy implements HeroicUnit{
     public Position chase(Player p){
         int dx = this.getPosition().getX() - p.getPosition().getX();
         int dy = this.getPosition().getY() - p.getPosition().getY();
+        Position posToReturn;
         if (Math.abs(dx) > Math.abs(dy)) {
             if (dx > 0)
-                return getPosition().stepLeft();
+                posToReturn = getPosition().stepLeft();
             else
-                return getPosition().stepRight();
+                posToReturn = getPosition().stepRight();
         }
         else {
             if (dy > 0)
-                return getPosition().stepUp();
+                posToReturn = getPosition().stepUp();
             else
-                return getPosition().stepDown();
+                posToReturn = getPosition().stepDown();
         }
+        return posToReturn;
     }
 
 
@@ -86,7 +89,10 @@ public class Boss extends Enemy implements HeroicUnit{
     public Position enemyTurn(Player p) {
         if (this.getPosition().range(p.getPosition()) < visionRange) {
             if (combatTicks == abilityFrequency) {
-               System.out.print("castAbility");
+                combatTicks = 0;
+                List<Unit> player = new ArrayList<>();
+                player.add(p);
+                castAbility(player);
             }
             else {
                 combatTicks++;
@@ -97,16 +103,30 @@ public class Boss extends Enemy implements HeroicUnit{
             combatTicks = 0;
             return randomMove();
         }
-        return null;
+        return getPosition();
     }
 
+    protected void attackWithAbility(Player p, int attackPower){
+        int defenseRoll = p.defend();
+        int result = attackPower - defenseRoll;
+        if (result > 0) {
+            p.getHealth().setHealthAmount(p.getHealth().getHealthAmount() - result);
+            messageCB.send(getName() + " hit " + p.getName() + " for " + result + " ability damage.");
+        }
+        else
+            messageCB.send(getName() + " dealt 0 damage to " + p.getName() + ".");
+    }
 
     @Override
     public void processStep() {
     }
 
     @Override
-    public void castAbility(List<Enemy> enemies) {
-
+    public void castAbility(List<Unit> player) {
+        Player p = (Player) player.get(0);
+        messageCB.send(getName() + " shoots " + ABILITY_NAME + " for " + (getAttackPoints()));
+        attackWithAbility(p, getAttackPoints());
+        if(!p.isAlive())
+            p.onDeath();
     }
 }
